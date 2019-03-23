@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon server"
+		"dev": "nodemon server",
+		"start": "node server.js"
 	},
 	"repository": {
 		"type": "git",
@@ -21,9 +22,10 @@
 	"dependencies": {
 		"express": "^4.16.4",
 		"express-graphql": "^0.7.1",
-		"graphql": "^14.1.1"
+		"graphql": "^14.1.1",
+		"node-fetch": "^2.3.0"
 	},
 	"devDependencies": {
-		"node-fetch": "^2.3.0"
+		"nodemon": "^1.18.10"
 	}
 }
