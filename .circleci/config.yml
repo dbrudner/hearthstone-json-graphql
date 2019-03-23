@@ -14,7 +14,10 @@ jobs:
                   name: Install node modules
                   command: npm install
             - run:
-                  name: test
+                  name: Fetch mock data
+                  command: npm run test:data
+            - run:
+                  name: Test
                   command: npm test
             - run:
                   name: Deploy
