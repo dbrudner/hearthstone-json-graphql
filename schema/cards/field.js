@@ -21,15 +21,9 @@ module.exports = {
 		);
 
 		const data = await response.json();
-		const searchCardProperty = key => card =>
-			card[key] && card[key].includes(args[key] || "");
 
-		const filterByKey = key => _.filter(searchCardProperty(key));
-
-		const search = _.compose(
-			filterByKey("name"),
-			filterByKey("text"),
-		);
+		const includesName = strIncludes(args.name);
+		const searchName = searchCardProperty("name");
 
 		return search(data);
 	},
