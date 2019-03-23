@@ -1,0 +1,29 @@
+{
+	"name": "hearthstone-json-graphql",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dbrudner/hearthstone-json-graphql.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/dbrudner/hearthstone-json-graphql/issues"
+	},
+	"homepage": "https://github.com/dbrudner/hearthstone-json-graphql#readme",
+	"dependencies": {
+		"express": "^4.16.4",
+		"express-graphql": "^0.7.1",
+		"graphql": "^14.1.1"
+	},
+	"devDependencies": {
+		"node-fetch": "^2.3.0"
+	}
+}
