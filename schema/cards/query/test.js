@@ -14,13 +14,13 @@ describe("query", () => {
 		expect(expected.length).toBe(1);
 	});
 
-	it("should sort cards", () => {
-		const expected = query(cards, {
-			where: { name: { matches: "R" }, text: { matches: "Inspire" } },
-		});
+	// it("should sort cards", () => {
+	// 	const expected = query(cards, {
+	// 		where: { name: { matches: "R" }, text: { matches: "Inspire" } },
+	// 	});
 
-		console.log(expected);
+	// 	console.log(expected);
 
-		expect(expected.length).toBe(1);
-	});
+	// 	expect(expected.length).toBe(1);
+	// });
 });
