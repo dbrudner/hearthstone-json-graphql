@@ -5,7 +5,7 @@ const search = (cards, args) => {
 		_.filter(
 			_.flow(
 				_.get(key),
-				_.includes(args[key] || "")
+				_.includes(args.where[key] || "")
 			)
 		);
 
@@ -13,7 +13,7 @@ const search = (cards, args) => {
 		createSearchFilter("name"),
 		createSearchFilter("text")
 	);
-	return doSearch(cards);
+	return doSearch(cards, args);
 };
 
 module.exports = search;
