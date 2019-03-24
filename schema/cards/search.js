@@ -5,15 +5,15 @@ const search = (cards, args) => {
 		_.filter(
 			_.flow(
 				_.get(key),
-				_.includes(args[key] || ""),
-			),
+				_.includes(args[key] || "")
+			)
 		);
 
 	const doSearch = _.compose(
 		createSearchFilter("name"),
-		createSearchFilter("text"),
+		createSearchFilter("text")
 	);
 	return doSearch(cards);
 };
 
-module.exports = { search };
+module.exports = search;

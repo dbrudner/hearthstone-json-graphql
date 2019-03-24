@@ -1,9 +1,4 @@
-const {
-	strIncludes,
-	searchCardProperty,
-	filterByKey,
-	search,
-} = require("./fns");
+const search = require("./search");
 const cards = require("../../test/mock-data.json");
 
 const testData = [
@@ -21,7 +16,7 @@ const testData = [
 		rarity: "COMMON",
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
-		type: "SPELL",
+		type: "SPELL"
 	},
 	{
 		artist: "Tooth",
@@ -37,8 +32,8 @@ const testData = [
 		set: "TGT",
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
-		type: "SPELL",
-	},
+		type: "SPELL"
+	}
 ];
 
 describe("card", () => {
