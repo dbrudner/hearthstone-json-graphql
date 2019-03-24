@@ -45,6 +45,7 @@ describe("search", () => {
 
 	it("should filter cards when name is passed in args", () => {
 		const expected = testData.slice(1);
+
 		const actual = search({ where: { name: { matches: "s" } } })(testData);
 
 		expect(expected).toEqual(actual);
@@ -52,6 +53,7 @@ describe("search", () => {
 
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
+
 		const actual = search({
 			where: { text: { matches: "Secret" } },
 		})(testData);
@@ -61,6 +63,7 @@ describe("search", () => {
 
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
+
 		const actual = search({
 			where: { flavor: { matches: "Burning" } },
 		})(testData);
@@ -70,6 +73,7 @@ describe("search", () => {
 
 	it("should filter for cards when multiple where args are passed in", () => {
 		const expected = testData.slice(1);
+
 		const actual = search({
 			where: {
 				flavor: { matches: "Burning" },

@@ -54,6 +54,7 @@ module.exports = {
 		);
 
 		const data = await response.json();
+
 		return query(data, args);
 	},
 };

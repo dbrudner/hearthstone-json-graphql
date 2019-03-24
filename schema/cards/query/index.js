@@ -7,6 +7,7 @@ const query = (cards, args) => {
 		search(args),
 		sort(args),
 	);
+
 	return fn(cards);
 };
 

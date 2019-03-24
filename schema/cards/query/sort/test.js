@@ -58,20 +58,25 @@ describe("sort", () => {
 		})(testData);
 
 		const expected = testData.reverse();
+
 		expect(expected).toEqual(actual);
 	});
+
 	it("should sort ascendingly alphabetically when name is passed in and order is 'asc'", () => {
 		const actual = sort({
 			order: { by: "name", direction: "desc" },
 		})(testData);
 
 		const expected = testData;
+
 		expect(expected).toEqual(actual);
 	});
+
 	it("shouldn't sort if no args are passed", () => {
 		const actual = sort({})(testData);
 
 		const expected = testData;
+
 		expect(expected).toEqual(actual);
 	});
 });
