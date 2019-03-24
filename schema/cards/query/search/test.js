@@ -1,5 +1,5 @@
-const search = require("./search");
-const cards = require("../../test/mock-data.json");
+const search = require(".");
+const { cards } = require("../../../../test/mock-data.json");
 
 const testData = [
 	{
@@ -36,28 +36,60 @@ const testData = [
 	},
 ];
 
-describe("card", () => {
+describe("search", () => {
+	it("shouldn't filter when no args are passed", () => {
+		const actual = search({})(testData);
+
+		expect(actual).toEqual(testData);
+	});
+
 	it("should filter cards when name is passed in args", () => {
 		const expected = testData.slice(1);
-		const actual = search(testData, { where: { name: { matches: "s" } } });
+		const actual = search({ where: { name: { matches: "s" } } })(testData);
 
 		expect(expected).toEqual(actual);
 	});
 
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
-		const actual = search(testData, {
+		const actual = search({
 			where: { text: { matches: "Secret" } },
-		});
+		})(testData);
 
 		expect(expected).toEqual(actual);
 	});
+
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
-		const actual = search(testData, {
+		const actual = search({
 			where: { flavor: { matches: "Burning" } },
-		});
+		})(testData);
 
 		expect(expected).toEqual(actual);
+	});
+
+	it("should filter for cards when multiple where args are passed in", () => {
+		const expected = testData.slice(1);
+		const actual = search({
+			where: {
+				flavor: { matches: "Burning" },
+				text: { matches: "Secret" },
+				name: { matches: "s" },
+			},
+		})(testData);
+
+		expect(expected).toEqual(actual);
+	});
+
+	it("should filter real data", () => {
+		const actual = search({
+			where: {
+				name: {
+					matches: "Azure Drake",
+				},
+			},
+		})(cards);
+
+		expect(actual.length).toBe(1);
 	});
 });

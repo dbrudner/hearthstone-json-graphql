@@ -1,21 +1,48 @@
 const fetch = require("node-fetch");
 const Cards = require("./schema");
 const { GraphQLString, GraphQLInputObjectType } = require("graphql");
-const search = require("./search");
+const query = require("./query");
 
 module.exports = {
 	type: Cards,
 	args: {
 		where: {
 			type: new GraphQLInputObjectType({
-				name: {
-					matches: { type: GraphQLString },
-				},
-				text: {
-					matches: { type: GraphQLString },
-				},
-				flavor: {
-					matches: { type: GraphQLString },
+				name: "Where",
+				fields: {
+					name: {
+						type: new GraphQLInputObjectType({
+							name: "name",
+							fields: {
+								matches: {
+									name: "Matches",
+									type: GraphQLString,
+								},
+							},
+						}),
+					},
+					text: {
+						type: new GraphQLInputObjectType({
+							name: "text",
+							fields: {
+								matches: {
+									name: "Matches",
+									type: GraphQLString,
+								},
+							},
+						}),
+					},
+					flavor: {
+						type: new GraphQLInputObjectType({
+							name: "flavor",
+							fields: {
+								matches: {
+									name: "Matches",
+									type: GraphQLString,
+								},
+							},
+						}),
+					},
 				},
 			}),
 			description: "Search for cards.",
@@ -27,7 +54,6 @@ module.exports = {
 		);
 
 		const data = await response.json();
-
-		return search(data, args);
+		return query(data, args);
 	},
 };
