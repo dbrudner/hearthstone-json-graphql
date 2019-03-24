@@ -5,13 +5,12 @@ const search = (cards, args) => {
 		_.filter(
 			_.flow(
 				_.get(key),
-				_.includes(args.where[key] || "")
-			)
+				_.includes(args.where[key] ? args.where[key].matches : ""),
+			),
 		);
 
 	const doSearch = _.compose(
-		createSearchFilter("name"),
-		createSearchFilter("text")
+		["name", "text", "flavor"].map(createSearchFilter),
 	);
 	return doSearch(cards, args);
 };

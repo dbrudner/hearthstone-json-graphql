@@ -9,12 +9,9 @@ const Card = new GraphQLObjectType({
 	name: "Card",
 	fields: () => {
 		return {
-			name: {
-				type: GraphQLString,
-			},
+			name: { type: GraphQLString },
 			id: { type: GraphQLString },
 			dbfId: { type: GraphQLInt },
-			name: { type: GraphQLString },
 			text: { type: GraphQLString },
 			flavor: { type: GraphQLString },
 			artist: { type: GraphQLString },

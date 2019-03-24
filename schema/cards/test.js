@@ -16,7 +16,7 @@ const testData = [
 		rarity: "COMMON",
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
-		type: "SPELL"
+		type: "SPELL",
 	},
 	{
 		artist: "Tooth",
@@ -32,21 +32,31 @@ const testData = [
 		set: "TGT",
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
-		type: "SPELL"
-	}
+		type: "SPELL",
+	},
 ];
 
 describe("card", () => {
 	it("should filter cards when name is passed in args", () => {
 		const expected = testData.slice(1);
-		const actual = search(testData, { name: "s" });
+		const actual = search(testData, { where: { name: { matches: "s" } } });
 
 		expect(expected).toEqual(actual);
 	});
 
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
-		const actual = search(testData, { text: "Secret" });
+		const actual = search(testData, {
+			where: { text: { matches: "Secret" } },
+		});
+
+		expect(expected).toEqual(actual);
+	});
+	it("should filter cards when text is passed in args", () => {
+		const expected = testData.slice(1);
+		const actual = search(testData, {
+			where: { flavor: { matches: "Burning" } },
+		});
 
 		expect(expected).toEqual(actual);
 	});

@@ -8,22 +8,26 @@ module.exports = {
 	args: {
 		where: {
 			type: new GraphQLInputObjectType({
-				name: "Where",
-				fields: {
-					name: { type: GraphQLString },
-					matches: { type: GraphQLString }
-				}
+				name: {
+					matches: { type: GraphQLString },
+				},
+				text: {
+					matches: { type: GraphQLString },
+				},
+				flavor: {
+					matches: { type: GraphQLString },
+				},
 			}),
-			description: "Search for cards."
-		}
+			description: "Search for cards.",
+		},
 	},
 	async resolve(_, args) {
 		const response = await fetch(
-			"https://api.hearthstonejson.com/v1/25770/enUS/cards.collectible.json"
+			"https://api.hearthstonejson.com/v1/25770/enUS/cards.collectible.json",
 		);
 
 		const data = await response.json();
 
 		return search(data, args);
-	}
+	},
 };
