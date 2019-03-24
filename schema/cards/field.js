@@ -1,26 +1,29 @@
 const fetch = require("node-fetch");
 const Cards = require("./schema");
-const { GraphQLString } = require("graphql");
+const { GraphQLString, GraphQLInputObjectType } = require("graphql");
 const search = require("./search");
+
 module.exports = {
 	type: Cards,
 	args: {
-		name: {
-			type: GraphQLString,
-			description: "Do a search for a card by name."
-		},
-		text: {
-			type: GraphQLString,
-			description: "Do a search for a card by description."
+		where: {
+			type: new GraphQLInputObjectType({
+				name: "Where",
+				fields: {
+					name: { type: GraphQLString },
+					matches: { type: GraphQLString }
+				}
+			}),
+			description: "Search for cards."
 		}
 	},
-	async resolve(parentValue, args) {
+	async resolve(_, args) {
 		const response = await fetch(
 			"https://api.hearthstonejson.com/v1/25770/enUS/cards.collectible.json"
 		);
 
 		const data = await response.json();
 
-		return search(data);
+		return search(data, args);
 	}
 };
