@@ -4,10 +4,9 @@ const { GraphQLString, GraphQLInputObjectType } = require("graphql");
 const query = require("./query");
 
 const matches = new GraphQLInputObjectType({
-	name: "matches",
+	name: "Matches",
 	fields: {
 		matches: {
-			name: "Matches",
 			type: GraphQLString,
 		},
 	},
