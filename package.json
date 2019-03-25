@@ -5,9 +5,10 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "jest",
+		"test:data": "node create-mock-data.js",
+		"test:ci": "jest --ci --reporters=default --reporters=jest-junit --collectCoverage=true",
 		"dev": "nodemon server",
 		"start": "node server.js",
-		"test:data": "node create-mock-data.js",
 		"docs:generate": "rm -rf ./docs && graphdoc -e http://localhost:3000/graphql -o ./docs"
 	},
 	"repository": {
@@ -31,6 +32,10 @@
 	"devDependencies": {
 		"@2fd/graphdoc": "^2.4.0",
 		"jest": "^24.5.0",
+		"jest-junit": "^6.3.0",
 		"nodemon": "^1.18.10"
+	},
+	"jest-junit": {
+		"outputDirectory": "./test-results"
 	}
 }
