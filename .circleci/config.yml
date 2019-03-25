@@ -18,7 +18,7 @@ jobs:
                   command: npm run test:ci
             - store_artifacts:
                   path: /home/circleci/project/tmp/test-results
-                  destination: test_results
+                  destination: /test_results
             - store_test_results:
                   path: /test_results
             - run:
