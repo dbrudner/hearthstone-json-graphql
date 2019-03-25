@@ -36,7 +36,7 @@
 		"nodemon": "^1.18.10"
 	},
 	"jest-junit": {
-		"outputDirectory": "./tmp/test-results",
+		"outputDirectory": "~/tmp/test-results",
 		"outputName": "./jest.xml"
 	}
 }
