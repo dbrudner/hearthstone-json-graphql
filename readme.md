@@ -2,6 +2,6 @@
 
 # A graphQL API for Hearthstone
 
-GraphiQL can be found athttps://hearthstone-graphql.herokuapp.com/graphql
+GraphiQL can be found at https://hearthstone-graphql.herokuapp.com/graphql
 
 Docs can be found at https://hearthstone-graphql.herokuapp.com/docs/
