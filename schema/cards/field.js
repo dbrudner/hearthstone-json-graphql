@@ -3,6 +3,16 @@ const Cards = require("./schema");
 const { GraphQLString, GraphQLInputObjectType } = require("graphql");
 const query = require("./query");
 
+const matches = new GraphQLInputObjectType({
+	name: "matches",
+	fields: {
+		matches: {
+			name: "Matches",
+			type: GraphQLString,
+		},
+	},
+});
+
 module.exports = {
 	type: Cards,
 	args: {
@@ -11,37 +21,13 @@ module.exports = {
 				name: "Where",
 				fields: {
 					name: {
-						type: new GraphQLInputObjectType({
-							name: "name",
-							fields: {
-								matches: {
-									name: "Matches",
-									type: GraphQLString,
-								},
-							},
-						}),
+						type: matches,
 					},
 					text: {
-						type: new GraphQLInputObjectType({
-							name: "text",
-							fields: {
-								matches: {
-									name: "Matches",
-									type: GraphQLString,
-								},
-							},
-						}),
+						type: matches,
 					},
 					flavor: {
-						type: new GraphQLInputObjectType({
-							name: "flavor",
-							fields: {
-								matches: {
-									name: "Matches",
-									type: GraphQLString,
-								},
-							},
-						}),
+						type: matches,
 					},
 				},
 			}),
