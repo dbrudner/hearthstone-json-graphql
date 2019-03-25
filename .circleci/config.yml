@@ -17,10 +17,10 @@ jobs:
                   name: Run Jest and Collect Coverage Reports
                   command: npm run test:ci
             - store_artifacts:
-                  path: /home/circleci/project/tmp/test-results
+                  path: /home/circleci/project/tmp/test-results/jest
                   destination: /test_results
             - store_test_results:
-                  path: /home/circleci/project/tmp/test-results
+                  path: /home/circleci/project/tmp/test-results/jest
             - run:
                   name: Deploy
                   command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
