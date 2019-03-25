@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "jest",
 		"test:data": "node create-mock-data.js",
-		"test:ci": "jest --ci --reporters=default --reporters=jest-junit --collectCoverage=true",
+		"test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=text",
 		"dev": "nodemon server",
 		"start": "node server.js",
 		"docs:generate": "rm -rf ./docs && graphdoc -e http://localhost:3000/graphql -o ./docs"
@@ -38,5 +38,14 @@
 	"jest-junit": {
 		"outputDirectory": "./tmp/test-results",
 		"outputName": "./jest.xml"
+	},
+	"jest": {
+		"coverageReporters": [
+			"text"
+		],
+		"reporters": [
+			"default",
+			"jest-junit"
+		]
 	}
 }
