@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="12" failures="0" time="3.187">
+  <testsuite name="test" errors="0" failures="0" skipped="0" timestamp="2019-03-25T01:31:38" time="1.167" tests="1">
+    <testcase classname="test Should pass" name="test Should pass" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="sort" errors="0" failures="0" skipped="0" timestamp="2019-03-25T01:31:38" time="1.194" tests="3">
+    <testcase classname="sort should sort descendingly alphabetically when name is passed in and order is &apos;desc&apos;" name="sort should sort descendingly alphabetically when name is passed in and order is &apos;desc&apos;" time="0.004">
+    </testcase>
+    <testcase classname="sort should sort ascendingly alphabetically when name is passed in and order is &apos;asc&apos;" name="sort should sort ascendingly alphabetically when name is passed in and order is &apos;asc&apos;" time="0">
+    </testcase>
+    <testcase classname="sort shouldn&apos;t sort if no args are passed" name="sort shouldn&apos;t sort if no args are passed" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="search" errors="0" failures="0" skipped="0" timestamp="2019-03-25T01:31:38" time="1.231" tests="6">
+    <testcase classname="search shouldn&apos;t filter when no args are passed" name="search shouldn&apos;t filter when no args are passed" time="0.004">
+    </testcase>
+    <testcase classname="search should filter cards when name is passed in args" name="search should filter cards when name is passed in args" time="0.003">
+    </testcase>
+    <testcase classname="search should filter cards when text is passed in args" name="search should filter cards when text is passed in args" time="0">
+    </testcase>
+    <testcase classname="search should filter cards when text is passed in args" name="search should filter cards when text is passed in args" time="0.001">
+    </testcase>
+    <testcase classname="search should filter for cards when multiple where args are passed in" name="search should filter for cards when multiple where args are passed in" time="0">
+    </testcase>
+    <testcase classname="search should filter real data" name="search should filter real data" time="0.02">
+    </testcase>
+  </testsuite>
+  <testsuite name="query" errors="0" failures="0" skipped="0" timestamp="2019-03-25T01:31:38" time="1.22" tests="2">
+    <testcase classname="query should have cards" name="query should have cards" time="0.003">
+    </testcase>
+    <testcase classname="query should filter cards" name="query should filter cards" time="0.022">
+    </testcase>
+  </testsuite>
+</testsuites>
