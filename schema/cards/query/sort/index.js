@@ -1,19 +1,19 @@
 const _ = require("lodash/fp");
 
-const sort = args => cards => {
+const sort = args => {
 	if (!args.order) {
-		return cards;
+		return _.map(cards => cards);
 	}
 
-	const fn = by =>
-		cards.sort((a, b) => {
-			if (args.order.direction === "asc") {
-				return a[by] - b[by];
-			}
-			return b[by] - a[by];
-		});
+	const sort = _.sortBy(args.order.by);
 
-	return fn(args.order.by);
+	const direction =
+		args.order.direction === "desc" ? _.map(cards => cards) : _.reverse;
+
+	return _.flow(
+		sort,
+		direction,
+	);
 };
 
 module.exports = sort;
