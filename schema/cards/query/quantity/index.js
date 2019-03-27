@@ -1,6 +1,10 @@
 const _ = require("lodash/fp");
 
 const quantity = args => cards => {
+	if (!args) {
+		return cards;
+	}
+
 	const comparators = {
 		isLessThan: a => b => a > b,
 		isGreaterThan: a => b => a < b,
@@ -9,16 +13,16 @@ const quantity = args => cards => {
 
 	const fn = key => {
 		// If there's no argument passed for key, pass through
-		if (!args.filter[key]) {
+		if (!args[key]) {
 			return _.map(cards => cards);
 		}
 
 		const createFilter = filter =>
-			args.filter[key][filter]
+			args[key][filter]
 				? _.filter(
 						_.pipe(
 							_.get(key),
-							comparators[filter](args.filter[key][filter]),
+							comparators[filter](args[key][filter]),
 						),
 				  )
 				: _.map(cards => cards);

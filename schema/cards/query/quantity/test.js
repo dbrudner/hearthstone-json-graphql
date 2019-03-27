@@ -56,7 +56,7 @@ const testData = () => [
 
 describe("quantity", () => {
 	it("should find cards less than number passed in args as isLessThan", () => {
-		const fn = quantity({ filter: { cost: { isLessThan: 4 } } });
+		const fn = quantity({ cost: { isLessThan: 4 } });
 
 		const actual = fn(testData());
 
@@ -66,38 +66,33 @@ describe("quantity", () => {
 	});
 
 	it("should find cards greater than number passed in args as isGreaterThan", () => {
-		const fn = quantity({ filter: { cost: { isGreaterThan: 4 } } });
+		const fn = quantity({ cost: { isGreaterThan: 4 } });
 
 		const actual = fn(testData());
 
 		const expected = testData().slice(0, 1);
-		// console.log(actual);
-		// console.log(expected);
 
 		expect(expected).toEqual(actual);
 	});
 
 	it("should find cards equal to the number passed in args as isEqualTo", () => {
-		const fn = quantity({ filter: { cost: { isEqualTo: 5 } } });
+		const fn = quantity({ cost: { isEqualTo: 5 } });
 
 		const actual = fn(testData());
 
 		const expected = testData().slice(0, 1);
-		// console.log(actual);
-		// console.log(expected);
 
 		expect(expected).toEqual(actual);
 	});
+
 	it("should be able to pass in multiple args", () => {
 		const fn = quantity({
-			filter: { cost: { isLessThan: 4, isGreaterThan: 2 } },
+			cost: { isLessThan: 4, isGreaterThan: 2 },
 		});
 
 		const actual = fn(testData());
 
 		const expected = testData().slice(1, 2);
-		// console.log(actual);
-		// console.log(expected);
 
 		expect(expected).toEqual(actual);
 	});
