@@ -1,5 +1,4 @@
-const sort = require(".");
-const _ = require("lodash");
+const quantity = require(".");
 
 const testData = () => [
 	{
@@ -17,6 +16,7 @@ const testData = () => [
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
 		type: "SPELL",
+		attack: 5,
 	},
 	{
 		artist: "Tooth",
@@ -33,12 +33,13 @@ const testData = () => [
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
 		type: "SPELL",
+		attack: 3,
 	},
 	{
 		artist: "Tooth",
 		cardClass: "MAGE",
 		collectible: true,
-		cost: 3,
+		cost: 1,
 		dbfId: 2541,
 		flavor: "Burning man, brah.",
 		id: "AT_002",
@@ -49,42 +50,54 @@ const testData = () => [
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
 		type: "SPELL",
+		attack: 1,
 	},
 ];
 
-describe("sort", () => {
-	it("should sort descendingly alphabetically when name is passed in and order is 'desc'", () => {
-		const actual = sort({
-			order: { by: "name", direction: "desc" },
-		})(testData());
+describe("quantity", () => {
+	it("should find cards less than number passed in args as isLessThan", () => {
+		const fn = quantity({ filter: { cost: { isLessThan: 4 } } });
 
-		const expected = testData().reverse();
+		const actual = fn(testData());
 
-		expect(expected).toEqual(actual);
-	});
-
-	it("should sort ascendingly alphabetically when name is passed in and order is 'asc'", () => {
-		const actual = sort({
-			order: { by: "name", direction: "asc" },
-		})(testData());
-
-		const expected = testData();
+		const expected = testData().slice(1);
 
 		expect(expected).toEqual(actual);
 	});
 
-	it("shouldn't sort if no args are passed", () => {
-		const actual = sort({})(testData());
+	it("should find cards greater than number passed in args as isGreaterThan", () => {
+		const fn = quantity({ filter: { cost: { isGreaterThan: 4 } } });
 
-		const expected = testData();
+		const actual = fn(testData());
+
+		const expected = testData().slice(0, 1);
+		// console.log(actual);
+		// console.log(expected);
 
 		expect(expected).toEqual(actual);
 	});
 
-	it("should sort ascendingly if no direction is passed", () => {
-		const actual = sort({ order: { by: "name" } })(testData());
+	it("should find cards equal to the number passed in args as isEqualTo", () => {
+		const fn = quantity({ filter: { cost: { isEqualTo: 5 } } });
 
-		const expected = testData();
+		const actual = fn(testData());
+
+		const expected = testData().slice(0, 1);
+		// console.log(actual);
+		// console.log(expected);
+
+		expect(expected).toEqual(actual);
+	});
+	it("should be able to pass in multiple args", () => {
+		const fn = quantity({
+			filter: { cost: { isLessThan: 4, isGreaterThan: 2 } },
+		});
+
+		const actual = fn(testData());
+
+		const expected = testData().slice(1, 2);
+		// console.log(actual);
+		// console.log(expected);
 
 		expect(expected).toEqual(actual);
 	});

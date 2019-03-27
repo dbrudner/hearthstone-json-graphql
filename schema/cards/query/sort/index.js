@@ -8,7 +8,7 @@ const sort = args => {
 	const sort = _.sortBy(args.order.by);
 
 	const direction =
-		args.order.direction === "desc" ? _.map(cards => cards) : _.reverse;
+		args.order.direction === "desc" ? _.reverse : _.map(cards => cards);
 
 	return _.flow(
 		sort,

@@ -1,13 +1,23 @@
 const fetch = require("node-fetch");
 const Cards = require("./schema");
-const { GraphQLString, GraphQLInputObjectType } = require("graphql");
+const {
+	GraphQLString,
+	GraphQLInputObjectType,
+	GraphQLInt,
+} = require("graphql");
 const query = require("./query");
 
-const matches = new GraphQLInputObjectType({
-	name: "Matches",
+const quantity = new GraphQLInputObjectType({
+	name: "Quantity",
 	fields: {
-		matches: {
-			type: GraphQLString,
+		isLessThan: {
+			type: GraphQLInt,
+		},
+		isGreaterThan: {
+			type: GraphQLInt,
+		},
+		isEqualTo: {
+			type: GraphQLInt,
 		},
 	},
 });
@@ -15,22 +25,33 @@ const matches = new GraphQLInputObjectType({
 module.exports = {
 	type: Cards,
 	args: {
-		where: {
+		filter: {
 			type: new GraphQLInputObjectType({
-				name: "Where",
+				name: "Filter",
 				fields: {
-					name: {
-						type: matches,
-					},
-					text: {
-						type: matches,
-					},
-					flavor: {
-						type: matches,
-					},
+					name: { type: GraphQLString },
+					text: { type: GraphQLString },
+					flavor: { type: GraphQLString },
+					health: { type: quantity },
+					attack: { type: quantity },
+					cost: { type: quantity },
 				},
 			}),
 			description: "Search for cards.",
+		},
+		sort: {
+			type: new GraphQLInputObjectType({
+				name: "Sorted",
+				fields: {
+					by: {
+						type: GraphQLString,
+					},
+					direction: {
+						type: GraphQLString,
+					},
+				},
+			}),
+			description: "Sort cards by property in either direction.",
 		},
 	},
 	async resolve(_, args) {
