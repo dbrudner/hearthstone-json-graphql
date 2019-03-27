@@ -1,13 +1,15 @@
 const _ = require("lodash/fp");
 
 const search = args => cards => {
-	if (!args.where) return cards;
+	if (!args) {
+		return cards;
+	}
 
 	const createSearchFilter = key =>
 		_.filter(
 			_.flow(
 				_.get(key),
-				_.includes(args.where[key] ? args.where[key].matches : ""),
+				_.includes(args[key] ? args[key] : ""),
 			),
 		);
 

@@ -46,7 +46,7 @@ describe("search", () => {
 	it("should filter cards when name is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({ where: { name: { matches: "s" } } })(testData);
+		const actual = search({ name: "s" })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -54,9 +54,7 @@ describe("search", () => {
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({
-			where: { text: { matches: "Secret" } },
-		})(testData);
+		const actual = search({ text: "Secret" })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -64,9 +62,7 @@ describe("search", () => {
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({
-			where: { flavor: { matches: "Burning" } },
-		})(testData);
+		const actual = search({ flavor: "Burning" })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -75,11 +71,9 @@ describe("search", () => {
 		const expected = testData.slice(1);
 
 		const actual = search({
-			where: {
-				flavor: { matches: "Burning" },
-				text: { matches: "Secret" },
-				name: { matches: "s" },
-			},
+			flavor: "Burning",
+			text: "Secret",
+			name: "s",
 		})(testData);
 
 		expect(expected).toEqual(actual);
@@ -87,11 +81,7 @@ describe("search", () => {
 
 	it("should filter real data", () => {
 		const actual = search({
-			where: {
-				name: {
-					matches: "Azure Drake",
-				},
-			},
+			name: "Azure Drake",
 		})(cards);
 
 		expect(actual.length).toBe(1);
