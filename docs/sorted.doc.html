@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="./styles/graphdoc.css" />
-    <title>Where</title>
+    <title>Sorted</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet"><link type="text/css" rel="stylesheet" href="./assets/code.css" /><link type="text/css" rel="stylesheet" href="./assets/require-by.css" />
 </head>
 <body class="slds-scrollable--y">
@@ -110,14 +110,19 @@
 <div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
     <h4 class="slds-text-title--caps slds-p-around--medium">Input Objects</h4>
     <ul>
-        <li  title="Matches">
-            <a href="matches.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Matches
+        <li  title="Filter">
+            <a href="filter.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Filter
             </a>
         </li>
-        <li class="slds-is-active" title="Where">
-            <a href="where.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Where
+        <li  title="Quantity">
+            <a href="quantity.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Quantity
+            </a>
+        </li>
+        <li class="slds-is-active" title="Sorted">
+            <a href="sorted.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Sorted
             </a>
         </li>
     </ul>
@@ -156,7 +161,7 @@
     </div>
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">INPUT_OBJECT</p>
-        <h1 class="slds-text-heading--large">Where</h1>
+        <h1 class="slds-text-heading--large">Sorted</h1>
         <div class="slds-text-body--regular"></div>
     </div>
 </section>
@@ -168,7 +173,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">Where</span> {</li><li><span class="tab"><li><span class="tab"><span class="meta">name</span>: <a class="support type" href="matches.doc.html">Matches</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">text</span>: <a class="support type" href="matches.doc.html">Matches</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">flavor</span>: <a class="support type" href="matches.doc.html">Matches</a></span></li></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">Sorted</span> {</li><li><span class="tab"><li><span class="tab"><span class="meta">by</span>: <a class="support type" href="string.doc.html">String</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">direction</span>: <a class="support type" href="string.doc.html">String</a></span></li></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>

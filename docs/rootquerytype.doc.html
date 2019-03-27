@@ -110,14 +110,19 @@
 <div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
     <h4 class="slds-text-title--caps slds-p-around--medium">Input Objects</h4>
     <ul>
-        <li  title="Matches">
-            <a href="matches.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Matches
+        <li  title="Filter">
+            <a href="filter.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Filter
             </a>
         </li>
-        <li  title="Where">
-            <a href="where.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Where
+        <li  title="Quantity">
+            <a href="quantity.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Quantity
+            </a>
+        </li>
+        <li  title="Sorted">
+            <a href="sorted.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Sorted
             </a>
         </li>
     </ul>
@@ -168,7 +173,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">type</span> <span class="identifier">RootQueryType</span> {</li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>where</strong>: Search for cards.</span></span></li><li><span class="tab"><span class="meta">cards</span>(<span class="meta">where</span>: <a class="support type" href="where.doc.html">Where</a>): [<a class="support type" href="card.doc.html">Card</a>] </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">type</span> <span class="identifier">RootQueryType</span> {</li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: Search for cards.</span></span></li><li><span class="tab"><span class="comment line">#   <strong>sort</strong>: Sort cards by property in either direction.</span></span></li><li><span class="tab"><span class="meta">cards</span>(<span class="meta">filter</span>: <a class="support type" href="filter.doc.html">Filter</a>, <span class="meta">sort</span>: <a class="support type" href="sorted.doc.html">Sorted</a>): [<a class="support type" href="card.doc.html">Card</a>] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
