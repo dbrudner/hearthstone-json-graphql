@@ -37,6 +37,9 @@ const cardClass = new GraphQLEnumType({
 		},
 		druid: {
 			value: "DRUID"
+		},
+		neutral: {
+			value: "NEUTRAL"
 		}
 	}
 });
