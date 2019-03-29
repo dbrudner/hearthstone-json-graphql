@@ -1,5 +1,5 @@
 const search = require(".");
-const { cards } = require("../../../../test/mock-data.json");
+const { cards } = require("../../../../../test/mock-data.json");
 
 const testData = [
 	{
@@ -16,7 +16,7 @@ const testData = [
 		rarity: "COMMON",
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
-		type: "SPELL",
+		type: "SPELL"
 	},
 	{
 		artist: "Tooth",
@@ -32,11 +32,11 @@ const testData = [
 		set: "TGT",
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
-		type: "SPELL",
-	},
+		type: "SPELL"
+	}
 ];
 
-describe("search", () => {
+describe("search filter", () => {
 	it("shouldn't filter when no args are passed", () => {
 		const actual = search({})(testData);
 
@@ -73,7 +73,7 @@ describe("search", () => {
 		const actual = search({
 			flavor: "Burning",
 			text: "Secret",
-			name: "s",
+			name: "s"
 		})(testData);
 
 		expect(expected).toEqual(actual);
@@ -81,7 +81,7 @@ describe("search", () => {
 
 	it("should filter real data", () => {
 		const actual = search({
-			name: "Azure Drake",
+			name: "Azure Drake"
 		})(cards);
 
 		expect(actual.length).toBe(1);
