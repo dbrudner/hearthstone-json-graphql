@@ -16,7 +16,7 @@ const testData = () => [
 		rarity: "COMMON",
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
-		type: "SPELL",
+		type: "SPELL"
 	},
 	{
 		artist: "Tooth",
@@ -32,7 +32,7 @@ const testData = () => [
 		set: "TGT",
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
-		type: "SPELL",
+		type: "SPELL"
 	},
 	{
 		artist: "Tooth",
@@ -48,15 +48,13 @@ const testData = () => [
 		set: "TGT",
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
-		type: "SPELL",
-	},
+		type: "SPELL"
+	}
 ];
 
 describe("sort", () => {
 	it("should sort descendingly alphabetically when name is passed in and order is 'desc'", () => {
-		const actual = sort({
-			order: { by: "name", direction: "desc" },
-		})(testData());
+		const actual = sort({ by: "name", direction: "desc" })(testData());
 
 		const expected = testData().reverse();
 
@@ -64,9 +62,7 @@ describe("sort", () => {
 	});
 
 	it("should sort ascendingly alphabetically when name is passed in and order is 'asc'", () => {
-		const actual = sort({
-			order: { by: "name", direction: "asc" },
-		})(testData());
+		const actual = sort({ by: "name", direction: "asc" })(testData());
 
 		const expected = testData();
 
@@ -82,7 +78,7 @@ describe("sort", () => {
 	});
 
 	it("should sort ascendingly if no direction is passed", () => {
-		const actual = sort({ order: { by: "name" } })(testData());
+		const actual = sort({ by: "name" })(testData());
 
 		const expected = testData();
 
