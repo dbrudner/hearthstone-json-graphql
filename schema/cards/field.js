@@ -7,41 +7,31 @@ const {
 	GraphQLEnumType
 } = require("graphql");
 const query = require("./query");
+const _ = require("lodash/fp");
+
+const cardClasses = [
+	"mage",
+	"warrior",
+	"priest",
+	"rogue",
+	"warlock",
+	"shaman",
+	"barbarian",
+	"druid",
+	"neutral"
+];
+
+const createCardClassValue = _.pipe(
+	_.keyBy(x => x),
+	_.mapValues(x => ({ value: x.toUpperCase() }))
+);
+
+const cardClassValues = createCardClassValue(cardClasses);
+console.log(cardClassValues);
 
 const cardClass = new GraphQLEnumType({
 	name: "cardClass",
-	values: {
-		mage: {
-			value: "MAGE"
-		},
-		warrior: {
-			value: "WARRIOR"
-		},
-		priest: {
-			value: "PRIEST"
-		},
-		rogue: {
-			value: "ROGUE"
-		},
-		warlock: {
-			value: "WARLOCK"
-		},
-		shaman: {
-			value: "SHAMAN"
-		},
-		paladin: {
-			value: "PALADIN"
-		},
-		barbarian: {
-			value: "BARBARIAN"
-		},
-		druid: {
-			value: "DRUID"
-		},
-		neutral: {
-			value: "NEUTRAL"
-		}
-	}
+	values: cardClassValues
 });
 
 const quantity = new GraphQLInputObjectType({
