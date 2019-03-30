@@ -33,7 +33,7 @@ describe("full query with real data", () => {
 				set: "BOOMSDAY",
 				text:
 					"<b>Battlecry:</b> Deal 5 damage randomly split among all minions except Mechs.",
-				type: "MINION",
+				type: "MINION"
 			},
 			{
 				artist: "Matt Dixon",
@@ -53,7 +53,7 @@ describe("full query with real data", () => {
 				set: "GANGS",
 				text:
 					"[x]<b>Stealth</b>\n   Whenever this attacks and   \nkills a minion, summon 2\n Murlocs from your deck.",
-				type: "MINION",
+				type: "MINION"
 			},
 			{
 				artist: "Zoltan Boros",
@@ -70,7 +70,7 @@ describe("full query with real data", () => {
 				rarity: "COMMON",
 				set: "GILNEAS",
 				text: "<b>Divine Shield</b>\n<b>Rush</b>",
-				type: "MINION",
+				type: "MINION"
 			},
 			{
 				artist: "James Ryman",
@@ -89,7 +89,7 @@ describe("full query with real data", () => {
 				rarity: "LEGENDARY",
 				set: "LOOTAPALOOZA",
 				text: "After you play a minion, summon a copy of it.",
-				type: "MINION",
+				type: "MINION"
 			},
 			{
 				artist: "Efrem Palacios",
@@ -105,14 +105,14 @@ describe("full query with real data", () => {
 				name: "Vilespine Slayer",
 				playRequirements: {
 					REQ_MINION_TARGET: 0,
-					REQ_TARGET_FOR_COMBO: 0,
+					REQ_TARGET_FOR_COMBO: 0
 				},
 				rarity: "EPIC",
 				set: "UNGORO",
 				targetingArrowText: "Destroy a minion.",
 				text: "<b>Combo:</b> Destroy a minion.",
-				type: "MINION",
-			},
+				type: "MINION"
+			}
 		];
 
 		const expected = query(cards, {
@@ -120,8 +120,8 @@ describe("full query with real data", () => {
 				name: "a",
 				attack: { isLessThan: 4 },
 				health: { isEqualTo: 4 },
-				cost: { isEqualTo: 5 },
-			},
+				cost: { isEqualTo: 5 }
+			}
 		});
 
 		expect(actual).toEqual(expected);

@@ -16,7 +16,7 @@ const testData = () => [
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
 		type: "SPELL",
-		attack: 5,
+		attack: 5
 	},
 	{
 		artist: "Tooth",
@@ -33,7 +33,7 @@ const testData = () => [
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
 		type: "SPELL",
-		attack: 3,
+		attack: 3
 	},
 	{
 		artist: "Tooth",
@@ -50,11 +50,11 @@ const testData = () => [
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
 		type: "SPELL",
-		attack: 1,
-	},
+		attack: 1
+	}
 ];
 
-describe("quantity", () => {
+describe("quantity filters", () => {
 	it("should find cards less than number passed in args as isLessThan", () => {
 		const fn = quantity({ cost: { isLessThan: 4 } });
 
@@ -87,7 +87,7 @@ describe("quantity", () => {
 
 	it("should be able to pass in multiple args", () => {
 		const fn = quantity({
-			cost: { isLessThan: 4, isGreaterThan: 2 },
+			cost: { isLessThan: 4, isGreaterThan: 2 }
 		});
 
 		const actual = fn(testData());

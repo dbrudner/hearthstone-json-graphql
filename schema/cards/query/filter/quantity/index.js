@@ -8,7 +8,7 @@ const quantity = args => cards => {
 	const comparators = {
 		isLessThan: a => b => a > b,
 		isGreaterThan: a => b => a < b,
-		isEqualTo: a => b => a === b,
+		isEqualTo: a => b => a === b
 	};
 
 	const fn = key => {
@@ -22,8 +22,8 @@ const quantity = args => cards => {
 				? _.filter(
 						_.pipe(
 							_.get(key),
-							comparators[filter](args[key][filter]),
-						),
+							comparators[filter](args[key][filter])
+						)
 				  )
 				: _.map(cards => cards);
 
