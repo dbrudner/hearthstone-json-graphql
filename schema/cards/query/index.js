@@ -5,7 +5,9 @@ const quantity = require("./filter/quantity");
 const filterByCardClass = require("./filter/card-class");
 
 const query = (cards, args) => {
-	const withArgs = [search, filterByCardClass, quantity].map(fn => fn(args));
+	const withArgs = [search, filterByCardClass, quantity, sort].map(fn =>
+		fn(args),
+	);
 
 	const doQuery = _.pipe(withArgs);
 

@@ -1,9 +1,6 @@
 const _ = require("lodash/fp");
 
 const search = args => cards => {
-	console.log(args);
-	console.log(cards[2]);
-
 	if (!args.filter) {
 		return cards;
 	}

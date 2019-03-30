@@ -3,7 +3,6 @@ const get = require("lodash/get");
 
 module.exports = function filterByCardClass(args) {
 	const cardClass = _.get("filter.cardClass", args);
-	console.log(cardClass);
 
 	if (!cardClass) {
 		return _.map(x => x);
