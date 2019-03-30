@@ -1,7 +1,10 @@
 const _ = require("lodash/fp");
 
 const search = args => cards => {
-	if (!args) {
+	console.log(args);
+	console.log(cards[2]);
+
+	if (!args.filter) {
 		return cards;
 	}
 
@@ -9,7 +12,7 @@ const search = args => cards => {
 		_.filter(
 			_.flow(
 				_.get(key),
-				_.includes(args[key] ? args[key] : ""),
+				_.includes(args.filter[key] ? args.filter[key] : ""),
 			),
 		);
 

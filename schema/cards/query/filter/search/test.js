@@ -16,7 +16,7 @@ const testData = [
 		rarity: "COMMON",
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
-		type: "SPELL"
+		type: "SPELL",
 	},
 	{
 		artist: "Tooth",
@@ -32,8 +32,8 @@ const testData = [
 		set: "TGT",
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
-		type: "SPELL"
-	}
+		type: "SPELL",
+	},
 ];
 
 describe("search filter", () => {
@@ -46,7 +46,7 @@ describe("search filter", () => {
 	it("should filter cards when name is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({ name: "s" })(testData);
+		const actual = search({ filter: { name: "s" } })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -54,7 +54,7 @@ describe("search filter", () => {
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({ text: "Secret" })(testData);
+		const actual = search({ filter: { text: "Secret" } })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -62,7 +62,7 @@ describe("search filter", () => {
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({ flavor: "Burning" })(testData);
+		const actual = search({ filter: { flavor: "Burning" } })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -71,9 +71,11 @@ describe("search filter", () => {
 		const expected = testData.slice(1);
 
 		const actual = search({
-			flavor: "Burning",
-			text: "Secret",
-			name: "s"
+			filter: {
+				flavor: "Burning",
+				text: "Secret",
+				name: "s",
+			},
 		})(testData);
 
 		expect(expected).toEqual(actual);
@@ -81,7 +83,9 @@ describe("search filter", () => {
 
 	it("should filter real data", () => {
 		const actual = search({
-			name: "Azure Drake"
+			filter: {
+				name: "Azure Drake",
+			},
 		})(cards);
 
 		expect(actual.length).toBe(1);

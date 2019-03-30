@@ -16,7 +16,7 @@ const testData = () => [
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
 		type: "SPELL",
-		attack: 5
+		attack: 5,
 	},
 	{
 		artist: "Tooth",
@@ -33,7 +33,7 @@ const testData = () => [
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
 		type: "SPELL",
-		attack: 3
+		attack: 3,
 	},
 	{
 		artist: "Tooth",
@@ -50,13 +50,13 @@ const testData = () => [
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
 		type: "SPELL",
-		attack: 1
-	}
+		attack: 1,
+	},
 ];
 
 describe("quantity filters", () => {
 	it("should find cards less than number passed in args as isLessThan", () => {
-		const fn = quantity({ cost: { isLessThan: 4 } });
+		const fn = quantity({ filter: { cost: { isLessThan: 4 } } });
 
 		const actual = fn(testData());
 
@@ -66,7 +66,7 @@ describe("quantity filters", () => {
 	});
 
 	it("should find cards greater than number passed in args as isGreaterThan", () => {
-		const fn = quantity({ cost: { isGreaterThan: 4 } });
+		const fn = quantity({ filter: { cost: { isGreaterThan: 4 } } });
 
 		const actual = fn(testData());
 
@@ -76,7 +76,7 @@ describe("quantity filters", () => {
 	});
 
 	it("should find cards equal to the number passed in args as isEqualTo", () => {
-		const fn = quantity({ cost: { isEqualTo: 5 } });
+		const fn = quantity({ filter: { cost: { isEqualTo: 5 } } });
 
 		const actual = fn(testData());
 
@@ -87,7 +87,9 @@ describe("quantity filters", () => {
 
 	it("should be able to pass in multiple args", () => {
 		const fn = quantity({
-			cost: { isLessThan: 4, isGreaterThan: 2 }
+			filter: {
+				cost: { isLessThan: 4, isGreaterThan: 2 },
+			},
 		});
 
 		const actual = fn(testData());

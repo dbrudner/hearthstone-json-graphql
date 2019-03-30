@@ -1,6 +1,10 @@
 const _ = require("lodash/fp");
+const get = require("lodash/get");
 
-module.exports = function filterByCardClass(cardClass) {
+module.exports = function filterByCardClass(args) {
+	const cardClass = _.get("filter.cardClass", args);
+	console.log(cardClass);
+
 	if (!cardClass) {
 		return _.map(x => x);
 	}
@@ -8,7 +12,7 @@ module.exports = function filterByCardClass(cardClass) {
 	return _.filter(
 		_.pipe(
 			_.get("cardClass"),
-			_.eq(cardClass)
-		)
+			_.eq(cardClass),
+		),
 	);
 };

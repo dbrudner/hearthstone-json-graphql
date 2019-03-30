@@ -5,14 +5,11 @@ const quantity = require("./filter/quantity");
 const filterByCardClass = require("./filter/card-class");
 
 const query = (cards, args) => {
-	const fn = _.flow(
-		search(args.filter),
-		filterByCardClass(args.filter.cardClass),
-		quantity(args.filter),
-		sort(args.sort)
-	);
+	const withArgs = [search, filterByCardClass, quantity].map(fn => fn(args));
 
-	return fn(cards);
+	const doQuery = _.pipe(withArgs);
+
+	return doQuery(cards);
 };
 
 module.exports = query;
