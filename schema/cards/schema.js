@@ -3,7 +3,22 @@ const {
 	GraphQLString,
 	GraphQLList,
 	GraphQLInt,
+	GraphQLBoolean,
 } = require("graphql");
+
+const LightforgeScore = new GraphQLObjectType({
+	name: "LightforgeScore",
+	fields: () => {
+		return {
+			Hero: { type: GraphQLString },
+			Score: { type: GraphQLInt },
+			StopAfterFirst: { type: GraphQLBoolean },
+			StopAfterSecond: { type: GraphQLBoolean },
+			Bucket: { type: GraphQLInt },
+			SubBucket: { type: GraphQLInt },
+		};
+	},
+});
 
 const Card = new GraphQLObjectType({
 	name: "Card",
@@ -24,6 +39,9 @@ const Card = new GraphQLObjectType({
 			health: { type: GraphQLInt },
 			mechanics: {
 				type: GraphQLList(GraphQLString),
+			},
+			lightforgeScores: {
+				type: GraphQLList(LightforgeScore),
 			},
 		};
 	},

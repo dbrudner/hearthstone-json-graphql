@@ -1,4 +1,4 @@
-const { cards } = require("../../../test/mock-data");
+const cards = require("../../../data/cards");
 const query = require(".");
 
 describe("query", () => {
