@@ -18,13 +18,20 @@ const fetchAndWriteToJSON = async () => {
 	const lightforgeScores = await lightforgeData.json();
 
 	const data = await cards.map(card => {
-		const lightforgeScore = lightforgeScores.Cards.find(
+		const lightForgeScore = lightforgeScores.Cards.find(
 			lightForgeCardData => lightForgeCardData.CardId === card.id,
 		);
 
+		const lightForgeScores =
+			lightForgeScore && lightForgeScore.scores
+				? lightForgeScore.scores.reduce(({ Hero, Score }, x) => {
+						return { ...acc, [Hero.toLowerCase()]: Score };
+				  }, {})
+				: [];
+
 		return {
 			...card,
-			lightforgeScores: lightforgeScore ? lightforgeScore.Scores : [],
+			lightForgeScores,
 		};
 	});
 

@@ -3,20 +3,40 @@ const {
 	GraphQLString,
 	GraphQLList,
 	GraphQLInt,
-	GraphQLBoolean,
+	GraphQLEnumType,
 } = require("graphql");
+const cardClasses = require("../../constants/card-classes");
+const _ = require("lodash/fp");
 
-const LightforgeScore = new GraphQLObjectType({
-	name: "LightforgeScore",
-	fields: () => {
-		return {
-			Hero: { type: GraphQLString },
-			Score: { type: GraphQLInt },
-			StopAfterFirst: { type: GraphQLBoolean },
-			StopAfterSecond: { type: GraphQLBoolean },
-			Bucket: { type: GraphQLInt },
-			SubBucket: { type: GraphQLInt },
-		};
+const lightforgeFields = cardClasses.reduce((acc, cardClass) => {
+	return {
+		...acc,
+		[cardClass]: {
+			type: GraphQLInt,
+		},
+	};
+}, {});
+
+console.log(lightforgeFields);
+
+const Rarity = new GraphQLEnumType({
+	name: "Rarity",
+	values: {
+		free: {
+			value: "FREE",
+		},
+		common: {
+			value: "COMMON",
+		},
+		rare: {
+			value: "RARE",
+		},
+		epic: {
+			value: "EPIC",
+		},
+		legendary: {
+			value: "LEGENDARY",
+		},
 	},
 });
 
@@ -28,6 +48,7 @@ const Card = new GraphQLObjectType({
 			id: { type: GraphQLString },
 			dbfId: { type: GraphQLInt },
 			text: { type: GraphQLString },
+			rarity: { type: Rarity },
 			flavor: { type: GraphQLString },
 			artist: { type: GraphQLString },
 			attack: { type: GraphQLInt },
@@ -41,7 +62,12 @@ const Card = new GraphQLObjectType({
 				type: GraphQLList(GraphQLString),
 			},
 			lightforgeScores: {
-				type: GraphQLList(LightforgeScore),
+				type: new GraphQLObjectType({
+					name: "LightforgeScores",
+					fields: () => {
+						return lightforgeFields;
+					},
+				}),
 			},
 		};
 	},

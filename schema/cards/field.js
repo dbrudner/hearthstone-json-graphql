@@ -8,18 +8,7 @@ const {
 const query = require("./query");
 const _ = require("lodash/fp");
 const data = require("../../data/cards");
-
-const cardClasses = [
-	"mage",
-	"warrior",
-	"priest",
-	"rogue",
-	"warlock",
-	"shaman",
-	"barbarian",
-	"druid",
-	"neutral",
-];
+const cardClasses = require("../../constants/card-classes");
 
 const createCardClassValue = _.pipe(
 	_.keyBy(x => x),
