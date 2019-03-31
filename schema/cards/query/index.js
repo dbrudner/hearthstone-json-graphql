@@ -2,12 +2,10 @@ const _ = require("lodash/fp");
 const sort = require("./sort");
 const search = require("./filter/search");
 const quantity = require("./filter/quantity");
-const filterByCardClass = require("./filter/card-class");
+const filterByEnum = require("./filter/enum");
 
 const query = (cards, args) => {
-	const withArgs = [search, filterByCardClass, quantity, sort].map(fn =>
-		fn(args),
-	);
+	const withArgs = [search, filterByEnum, quantity, sort].map(fn => fn(args));
 
 	const doQuery = _.pipe(withArgs);
 

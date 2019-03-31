@@ -9,17 +9,24 @@ const query = require("./query");
 const _ = require("lodash/fp");
 const data = require("../../data/cards");
 const cardClasses = require("../../constants/card-classes");
+const rarities = require("../../constants/rarities");
 
-const createCardClassValue = _.pipe(
+const createEnum = _.pipe(
 	_.keyBy(x => x),
 	_.mapValues(x => ({ value: x.toUpperCase() })),
 );
 
-const cardClassValues = createCardClassValue(cardClasses);
+const cardClassValues = createEnum(cardClasses);
+const rarityValues = createEnum(rarities);
 
 const cardClass = new GraphQLEnumType({
 	name: "cardClass",
 	values: cardClassValues,
+});
+
+const rarity = new GraphQLEnumType({
+	name: "rarities",
+	values: rarityValues,
 });
 
 const quantity = new GraphQLInputObjectType({
@@ -51,6 +58,7 @@ module.exports = {
 					attack: { type: quantity },
 					cost: { type: quantity },
 					cardClass: { type: cardClass },
+					rarity: { type: rarity },
 				},
 			}),
 			description: "Search for cards.",
