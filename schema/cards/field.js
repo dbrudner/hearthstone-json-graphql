@@ -65,6 +65,23 @@ module.exports = {
 			}),
 			description: "Sort cards by property in either direction.",
 		},
+		results: {
+			type: new GraphQLInputObjectType({
+				name: "Results",
+				fields: {
+					limit: {
+						type: GraphQLInt,
+					},
+					page: {
+						type: GraphQLInt,
+					},
+					offset: {
+						type: GraphQLInt,
+					},
+				},
+			}),
+			description: "Pagination and result limits.",
+		},
 	},
 	async resolve(_, args) {
 		return query(cards, args);
