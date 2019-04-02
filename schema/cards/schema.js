@@ -3,7 +3,6 @@ const {
 	GraphQLString,
 	GraphQLList,
 	GraphQLInt,
-	GraphQLEnumType,
 } = require("graphql");
 const cardClasses = require("../../constants/card-classes");
 const rarities = require("../../constants/rarities");
@@ -19,10 +18,7 @@ const lightForgeFields = cardClasses.reduce((acc, cardClass) => {
 	};
 }, {});
 
-const Rarity = new GraphQLEnumType({
-	name: "Rarity",
-	values: createEnum(rarities),
-});
+const Rarity = createEnum(rarities, "Rarity");
 
 const Card = new GraphQLObjectType({
 	name: "Card",

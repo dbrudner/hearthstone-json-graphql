@@ -20,6 +20,7 @@ const filterByEnum = args => {
 	return _.pipe(
 		createFilter("cardClass"),
 		createFilter("rarity"),
+		createFilter("set"),
 	);
 };
 
