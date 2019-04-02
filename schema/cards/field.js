@@ -7,14 +7,10 @@ const {
 } = require("graphql");
 const query = require("./query");
 const _ = require("lodash/fp");
-const data = require("../../data/cards");
+const { cards } = require("../../data/cards");
 const cardClasses = require("../../constants/card-classes");
 const rarities = require("../../constants/rarities");
-
-const createEnum = _.pipe(
-	_.keyBy(x => x),
-	_.mapValues(x => ({ value: x.toUpperCase() })),
-);
+const createEnum = require("../../lib/create-enum");
 
 const cardClassValues = createEnum(cardClasses);
 const rarityValues = createEnum(rarities);
@@ -79,6 +75,6 @@ module.exports = {
 		},
 	},
 	async resolve(_, args) {
-		return query(data, args);
+		return query(cards, args);
 	},
 };

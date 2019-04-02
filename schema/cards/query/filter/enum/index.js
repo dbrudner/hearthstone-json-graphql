@@ -23,13 +23,4 @@ const filterByEnum = args => {
 	);
 };
 
-const filterRarity = _.filter(
-	_.pipe(
-		_.get("rarity"),
-		_.eq("RARE"),
-	),
-);
-
-// console.log(filterCardClass);
-
 module.exports = filterByEnum;

@@ -1,4 +1,4 @@
-const cards = require("../../../data/cards");
+const { cards } = require("../../../data/cards");
 const query = require(".");
 
 describe("query", () => {

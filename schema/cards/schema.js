@@ -6,9 +6,11 @@ const {
 	GraphQLEnumType,
 } = require("graphql");
 const cardClasses = require("../../constants/card-classes");
-const _ = require("lodash/fp");
+const rarities = require("../../constants/rarities");
+const createEnum = require("../../lib/create-enum");
+const _ = require("lodash");
 
-const lightforgeFields = cardClasses.reduce((acc, cardClass) => {
+const lightForgeFields = cardClasses.reduce((acc, cardClass) => {
 	return {
 		...acc,
 		[cardClass]: {
@@ -17,27 +19,9 @@ const lightforgeFields = cardClasses.reduce((acc, cardClass) => {
 	};
 }, {});
 
-console.log(lightforgeFields);
-
 const Rarity = new GraphQLEnumType({
 	name: "Rarity",
-	values: {
-		free: {
-			value: "FREE",
-		},
-		common: {
-			value: "COMMON",
-		},
-		rare: {
-			value: "RARE",
-		},
-		epic: {
-			value: "EPIC",
-		},
-		legendary: {
-			value: "LEGENDARY",
-		},
-	},
+	values: createEnum(rarities),
 });
 
 const Card = new GraphQLObjectType({
@@ -57,15 +41,16 @@ const Card = new GraphQLObjectType({
 			cost: { type: GraphQLInt },
 			elite: { type: GraphQLString },
 			faction: { type: GraphQLString },
+			set: { type: GraphQLString },
 			health: { type: GraphQLInt },
 			mechanics: {
 				type: GraphQLList(GraphQLString),
 			},
-			lightforgeScores: {
+			lightForgeScores: {
 				type: new GraphQLObjectType({
-					name: "LightforgeScores",
+					name: "lightForgeScores",
 					fields: () => {
-						return lightforgeFields;
+						return lightForgeFields;
 					},
 				}),
 			},

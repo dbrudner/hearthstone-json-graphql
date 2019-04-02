@@ -1,5 +1,5 @@
 const search = require(".");
-const cards = require("../../../../../data/cards");
+const { cards } = require("../../../../../data/cards");
 
 const testData = [
 	{
