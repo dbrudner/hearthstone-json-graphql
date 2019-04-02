@@ -31,7 +31,7 @@ const fetchAndWriteToJSON = async () => {
 			(acc, { Hero, Score }) => {
 				return {
 					...acc,
-					[Hero ? Hero.toLowerCase() : "neutral"]: Score,
+					[Hero ? Hero.toUpperCase() : "NEUTRAL"]: Score,
 				};
 			},
 			{},

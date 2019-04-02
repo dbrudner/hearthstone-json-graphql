@@ -5,7 +5,6 @@ const {
 	GraphQLInt,
 } = require("graphql");
 const query = require("./query");
-const _ = require("lodash/fp");
 const { cards } = require("../../data/cards");
 const cardClasses = require("../../constants/card-classes");
 const rarities = require("../../constants/rarities");
