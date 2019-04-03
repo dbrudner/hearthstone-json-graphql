@@ -12,7 +12,9 @@ const filterByEnum = args => {
 		return _.filter(
 			_.pipe(
 				_.get(enumerable),
-				_.eq(args.filter[enumerable]),
+				enumerable === "mechanics"
+					? _.includes(args.filter[enumerable])
+					: _.eq(args.filter[enumerable]),
 			),
 		);
 	};
@@ -22,6 +24,7 @@ const filterByEnum = args => {
 		createFilter("rarity"),
 		createFilter("set"),
 		createFilter("type"),
+		createFilter("mechanics"),
 	);
 };
 
