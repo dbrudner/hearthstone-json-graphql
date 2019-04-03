@@ -1,7 +1,5 @@
 const Meta = require("./schema");
-const cardClasses = require("../../constants/card-classes");
-const rarities = require("../../constants/rarities");
-const { sets } = require("../../data/cards");
+const { sets, cardClasses, rarities } = require("../../data/cards");
 
 module.exports = {
 	type: Meta,

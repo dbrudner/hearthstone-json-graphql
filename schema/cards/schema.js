@@ -4,10 +4,9 @@ const {
 	GraphQLList,
 	GraphQLInt,
 } = require("graphql");
-const cardClasses = require("../../constants/card-classes");
-const rarities = require("../../constants/rarities");
 const createEnum = require("../../lib/create-enum");
 const _ = require("lodash");
+const { rarities, cardClasses } = require("../../data/cards");
 
 const lightForgeFields = cardClasses.reduce((acc, cardClass) => {
 	return {

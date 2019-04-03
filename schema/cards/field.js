@@ -6,10 +6,8 @@ const {
 } = require("graphql");
 const query = require("./query");
 const { cards } = require("../../data/cards");
-const cardClasses = require("../../constants/card-classes");
-const rarities = require("../../constants/rarities");
 const createEnum = require("../../lib/create-enum");
-const { sets } = require("../../data/cards");
+const { sets, rarities, cardClasses } = require("../../data/cards");
 
 const cardClass = createEnum(cardClasses, "cardClass");
 const rarity = createEnum(rarities, "rarities");

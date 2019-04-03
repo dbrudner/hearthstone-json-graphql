@@ -43,11 +43,31 @@ const fetchAndWriteToJSON = async () => {
 		};
 	});
 
-	const sets = _.uniq(_.map(cards, x => _.get(x, "set")));
+	const makeEnum = e => _.uniq(_.map(cards, x => _.get(x, e)));
+
+	const sets = makeEnum("set");
+	const types = makeEnum("type");
+	const rarities = makeEnum("rarity");
+	const cardClasses = makeEnum("cardClass");
+
+	const mechanics = _.uniq(
+		_.reduce(
+			cards,
+			(acc, { mechanics }) => (mechanics ? [...acc, ...mechanics] : acc),
+			[],
+		),
+	);
 
 	fs.writeFileSync(
 		"./data/cards.json",
-		JSON.stringify({ cards: cardsWithLightforge, sets }),
+		JSON.stringify({
+			cards: cardsWithLightforge,
+			sets,
+			types,
+			rarities,
+			mechanics,
+			cardClasses,
+		}),
 	);
 };
 
