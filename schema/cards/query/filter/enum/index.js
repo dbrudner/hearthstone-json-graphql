@@ -21,6 +21,7 @@ const filterByEnum = args => {
 		createFilter("cardClass"),
 		createFilter("rarity"),
 		createFilter("set"),
+		createFilter("type"),
 	);
 };
 

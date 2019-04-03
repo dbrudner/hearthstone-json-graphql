@@ -6,7 +6,7 @@ const {
 } = require("graphql");
 const createEnum = require("../../lib/create-enum");
 const _ = require("lodash");
-const { rarities, cardClasses } = require("../../data/cards");
+const { rarities, cardClasses, types } = require("../../data/cards");
 
 const lightForgeFields = cardClasses.reduce((acc, cardClass) => {
 	return {
@@ -18,6 +18,7 @@ const lightForgeFields = cardClasses.reduce((acc, cardClass) => {
 }, {});
 
 const Rarity = createEnum(rarities, "Rarity");
+const Type = createEnum(types, "Type");
 
 const Card = new GraphQLObjectType({
 	name: "Card",
@@ -38,6 +39,7 @@ const Card = new GraphQLObjectType({
 			faction: { type: GraphQLString },
 			set: { type: GraphQLString },
 			health: { type: GraphQLInt },
+			type: { type: Type },
 			mechanics: {
 				type: GraphQLList(GraphQLString),
 			},
