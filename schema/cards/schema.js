@@ -39,6 +39,23 @@ const Card = new GraphQLObjectType({
 			faction: { type: GraphQLString },
 			set: { type: GraphQLString },
 			health: { type: GraphQLInt },
+			images: {
+				type: new GraphQLObjectType({
+					name: "images",
+					fields: () => ({
+						small: {
+							type: GraphQLString,
+						},
+						large: {
+							type: GraphQLString,
+						},
+						tile: {
+							type: GraphQLString,
+						},
+					}),
+				}),
+			},
+			tileImgUrl: { type: GraphQLString },
 			type: { type: Type },
 			mechanics: {
 				type: GraphQLList(GraphQLString),

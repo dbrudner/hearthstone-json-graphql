@@ -18,13 +18,21 @@ const fetchAndWriteToJSON = async () => {
 	const cards = await hearthstoneJSONData.json();
 	const lightforgeScores = await lightforgeData.json();
 
-	const cardsWithLightforge = await cards.map(card => {
+	const parsedCards = await cards.map(card => {
+		const { id } = card;
+
+		const images = {
+			small: `https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${id}.png`,
+			large: `https://art.hearthstonejson.com/v1/render/latest/enUS/512x/${id}.png`,
+			tile: `https://art.hearthstonejson.com/v1/tiles/${id}.png`,
+		};
+
 		const lightForgeScore = lightforgeScores.Cards.find(
 			lightForgeCardData => lightForgeCardData.CardId === card.id,
 		);
 
 		if (!lightForgeScore) {
-			return card;
+			return { ...card, images };
 		}
 
 		const lightForgeScores = lightForgeScore.Scores.reduce(
@@ -39,6 +47,7 @@ const fetchAndWriteToJSON = async () => {
 
 		return {
 			...card,
+			images,
 			lightForgeScores,
 		};
 	});
@@ -61,7 +70,7 @@ const fetchAndWriteToJSON = async () => {
 	fs.writeFileSync(
 		"./data/cards.json",
 		JSON.stringify({
-			cards: cardsWithLightforge,
+			cards: parsedCards,
 			sets,
 			types,
 			rarities,

@@ -9,7 +9,8 @@
 		"test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=text",
 		"dev": "nodemon server",
 		"start": "node server.js",
-		"docs:generate": "rm -rf ./docs && graphdoc -e http://localhost:3000/graphql -o ./docs"
+		"docs:generate": "rm -rf ./docs && graphdoc -e http://localhost:3000/graphql -o ./docs",
+		"build:sunwell": "webpack"
 	},
 	"repository": {
 		"type": "git",
@@ -28,13 +29,16 @@
 		"express-graphql": "^0.7.1",
 		"graphql": "^14.1.1",
 		"lodash": "^4.17.11",
-		"node-fetch": "^2.3.0"
+		"node-fetch": "^2.3.0",
+		"sunwell": "^0.10.0"
 	},
 	"devDependencies": {
 		"@2fd/graphdoc": "^2.4.0",
 		"jest": "^24.5.0",
 		"jest-junit": "^6.3.0",
-		"nodemon": "^1.18.10"
+		"nodemon": "^1.18.10",
+		"webpack": "^4.29.6",
+		"webpack-cli": "^3.3.0"
 	},
 	"jest-junit": {
 		"outputDirectory": "./tmp/test-results/jest",
