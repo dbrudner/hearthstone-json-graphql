@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "jest",
-		"fetch:data": "node fetch-data.js",
+		"fetch:data": "node ./data/fetch-data.js",
 		"test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=text",
 		"dev": "nodemon server",
 		"start": "node server.js",
