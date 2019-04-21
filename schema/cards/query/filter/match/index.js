@@ -1,11 +1,11 @@
 const _ = require("lodash/fp");
 
-const search = args => cards => {
+const match = args => cards => {
 	if (!args.filter) {
 		return cards;
 	}
 
-	const createSearchFilter = key =>
+	const createMatchFilter = key =>
 		_.filter(
 			_.flow(
 				_.get(key),
@@ -16,11 +16,11 @@ const search = args => cards => {
 			),
 		);
 
-	const doSearch = _.compose(
-		["name", "text", "flavor"].map(createSearchFilter),
+	const doMatch = _.compose(
+		["name", "text", "flavor"].map(createMatchFilter),
 	);
 
-	return doSearch(cards);
+	return doMatch(cards);
 };
 
-module.exports = search;
+module.exports = match;
