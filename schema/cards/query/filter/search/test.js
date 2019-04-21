@@ -54,7 +54,7 @@ describe("search filter", () => {
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({ filter: { text: "Secret" } })(testData);
+		const actual = search({ filter: { text: "secret" } })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -62,7 +62,7 @@ describe("search filter", () => {
 	it("should filter cards when text is passed in args", () => {
 		const expected = testData.slice(1);
 
-		const actual = search({ filter: { flavor: "Burning" } })(testData);
+		const actual = search({ filter: { flavor: "burning" } })(testData);
 
 		expect(expected).toEqual(actual);
 	});
@@ -73,7 +73,7 @@ describe("search filter", () => {
 		const actual = search({
 			filter: {
 				flavor: "Burning",
-				text: "Secret",
+				text: "secret",
 				name: "s",
 			},
 		})(testData);
@@ -84,7 +84,7 @@ describe("search filter", () => {
 	it("should filter real data", () => {
 		const actual = search({
 			filter: {
-				name: "Azure Drake",
+				name: "azure drake",
 			},
 		})(cards);
 

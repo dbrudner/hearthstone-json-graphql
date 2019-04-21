@@ -9,7 +9,10 @@ const search = args => cards => {
 		_.filter(
 			_.flow(
 				_.get(key),
-				_.includes(args.filter[key] ? args.filter[key] : ""),
+				_.lowerCase,
+				_.includes(
+					args.filter[key] ? args.filter[key].toLowerCase() : "",
+				),
 			),
 		);
 
