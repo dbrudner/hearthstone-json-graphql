@@ -48,7 +48,7 @@ module.exports = {
 					type: { type },
 				},
 			}),
-			description: "Search for cards.",
+			description: "Search for cards",
 		},
 		sort: {
 			type: new GraphQLInputObjectType({
@@ -62,7 +62,7 @@ module.exports = {
 					},
 				},
 			}),
-			description: "Sort cards by property in either direction.",
+			description: "Sort cards by property in either direction",
 		},
 		results: {
 			type: new GraphQLInputObjectType({
@@ -80,6 +80,10 @@ module.exports = {
 				},
 			}),
 			description: "Pagination and result limits.",
+		},
+		search: {
+			type: GraphQLString,
+			description: "Fuzzy search for card names and card text",
 		},
 	},
 	async resolve(_, args) {
