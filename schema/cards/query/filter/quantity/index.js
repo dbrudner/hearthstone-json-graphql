@@ -1,4 +1,5 @@
 const _ = require("lodash/fp");
+const get = require("lodash/get");
 
 const quantity = args => cards => {
 	if (!args.filter) {
@@ -11,26 +12,33 @@ const quantity = args => cards => {
 		isEqualTo: _.eq,
 	};
 
-	const fn = key => {
-		// If there's no argument passed for key, pass through
-		if (!args.filter[key]) {
+	const createComparison = cardProperty => {
+		const cardPropertyValue = get(args, `filter.${cardProperty}`);
+
+		if (!cardPropertyValue) {
 			return _.map(cards => cards);
 		}
 
-		const createFilter = filter =>
-			args.filter[key][filter]
+		const compare = compareFn =>
+			cardPropertyValue[compareFn]
 				? _.filter(
 						_.pipe(
-							_.get(key),
-							comparators[filter](args.filter[key][filter]),
+							_.get(cardProperty),
+							comparators[compareFn](
+								cardPropertyValue[compareFn],
+							),
 						),
 				  )
 				: _.map(cards => cards);
 
-		return _.pipe(Object.keys(comparators).map(createFilter));
+		return _.pipe(
+			["isLessThan", "isGreaterThan", "isEqualTo"].map(compare),
+		);
 	};
 
-	const doQuantity = _.pipe(["cost", "health", "attack"].map(fn));
+	const doQuantity = _.pipe(
+		["cost", "health", "attack"].map(createComparison),
+	);
 
 	return doQuantity(cards);
 };

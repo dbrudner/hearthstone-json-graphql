@@ -9,13 +9,13 @@ describe("query", () => {
 
 describe("full query with real data", () => {
 	it("should filter cards", () => {
-		const expected = query(cards, { filter: { name: "Azure Drake" } });
+		const actual = query(cards, { filter: { name: "Azure Drake" } });
 
-		expect(expected.length).toBe(1);
+		expect(actual.length).toBe(1);
 	});
 
 	it("should pass a test with real data", () => {
-		const actual = [
+		const expected = [
 			{
 				name: "Aluneth",
 			},
@@ -63,11 +63,17 @@ describe("full query with real data", () => {
 			},
 		];
 
-		const expected = query(cards, {
+		const actual = query(cards, {
 			filter: { cardClass: "MAGE", rarity: "LEGENDARY" },
 			sort: { by: "name" },
 		});
 
-		expect(expected.map(({ name }) => ({ name }))).toEqual(actual);
+		expect(actual.map(({ name }) => ({ name }))).toEqual(expected);
+	});
+
+	it("should perform a search", () => {
+		const actual = query(cards, { search: "drake" });
+
+		expect(actual.length).toBe(14);
 	});
 });
