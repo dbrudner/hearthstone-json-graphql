@@ -1,6 +1,8 @@
 const _ = require("lodash/fp");
 const get = require("lodash/get");
 
+const makeLowercase = _.map(_.lowerCase);
+
 const filterByEnum = args => {
 	const createFilter = enumerable => {
 		const arg = get(args, `filter.${enumerable}`);
@@ -13,8 +15,12 @@ const filterByEnum = args => {
 			_.pipe(
 				_.get(enumerable),
 				enumerable === "mechanics"
-					? _.includes(args.filter[enumerable])
-					: _.eq(args.filter[enumerable]),
+					? _.pipe(
+							_.every(m =>
+								makeLowercase(arg).includes(m.toLowerCase()),
+							),
+					  )
+					: _.eq(arg),
 			),
 		);
 	};

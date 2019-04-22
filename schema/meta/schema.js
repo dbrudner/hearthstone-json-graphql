@@ -8,6 +8,7 @@ module.exports = new GraphQLObjectType({
 			rarities: { type: new GraphQLList(GraphQLString) },
 			sets: { type: new GraphQLList(GraphQLString) },
 			types: { type: new GraphQLList(GraphQLString) },
+			mechanics: { type: new GraphQLList(GraphQLString) },
 		};
 	},
 });

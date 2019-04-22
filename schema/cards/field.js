@@ -3,16 +3,24 @@ const {
 	GraphQLString,
 	GraphQLInputObjectType,
 	GraphQLInt,
+	GraphQLList,
 } = require("graphql");
 const query = require("./query");
 const { cards } = require("../../data/cards");
 const createEnum = require("../../lib/create-enum");
-const { sets, rarities, cardClasses, types } = require("../../data/cards");
+const {
+	sets,
+	rarities,
+	cardClasses,
+	types,
+	mechanics,
+} = require("../../data/cards");
 
 const cardClass = createEnum(cardClasses, "cardClass");
-const rarity = createEnum(rarities, "rarities");
+const rarity = createEnum(rarities, "rarity");
 const set = createEnum(sets, "set");
 const type = createEnum(types, "type");
+const mechanic = createEnum(mechanics, "mechanic");
 
 const quantity = new GraphQLInputObjectType({
 	name: "Quantity",
@@ -46,6 +54,7 @@ module.exports = {
 					rarity: { type: rarity },
 					set: { type: set },
 					type: { type },
+					mechanics: { type: GraphQLList(mechanic) },
 				},
 			}),
 			description: "Search for cards",

@@ -13,24 +13,15 @@ const fetchAndWriteToJSON = async () => {
 		"http://thelightforge.com/api/TierList/Latest?locale=us",
 	);
 
-	const hsReplayResponse = await fetch(
-		"https://hsreplay.net/analytics/query/card_included_popularity_report/?GameType=RANKED_STANDARD&TimeRange=CURRENT_EXPANSION&RankRange=ALL",
-	);
-
-	const [
-		hearthstoneJSONData,
-		lightforgeData,
-		hsReplayData,
-	] = await Promise.all([
+	const [hearthstoneJSONData, lightforgeData] = await Promise.all([
 		hearthStoneJSONResponse,
 		lightforgeResponse,
-		hsReplayResponse,
 	]);
 
-	const cards = await hearthstoneJSONData.json();
-	const lightforgeScores = await lightforgeData.json();
+	const hearthstoneJSON = await hearthstoneJSONData.json();
+	const lightforge = await lightforgeData.json();
 
-	const parsedCards = await cards.map(card => {
+	const cards = hearthstoneJSON.map(card => {
 		const { id } = card;
 
 		const getLightforgeScore = createLightforgeScore(id);
@@ -38,7 +29,7 @@ const fetchAndWriteToJSON = async () => {
 		return {
 			...card,
 			images: images(id),
-			lightforgeScores: getLightforgeScore(lightforgeScores.Cards),
+			lightforge: getLightforgeScore(lightforge.Cards),
 		};
 	});
 
@@ -50,7 +41,7 @@ const fetchAndWriteToJSON = async () => {
 	fs.writeFileSync(
 		"./data/cards.json",
 		JSON.stringify({
-			cards: parsedCards,
+			cards,
 			sets: sets(cards),
 			types: types(cards),
 			rarities: rarities(cards),

@@ -9,8 +9,7 @@
 		"test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=text",
 		"dev": "nodemon server",
 		"start": "node server.js",
-		"docs:generate": "rm -rf ./docs && graphdoc -e http://localhost:3000/graphql -o ./docs",
-		"build:sunwell": "webpack"
+		"docs:generate": "rm -rf ./docs && graphdoc -e http://localhost:3000/graphql -o ./docs"
 	},
 	"repository": {
 		"type": "git",
