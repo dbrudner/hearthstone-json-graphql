@@ -37,6 +37,7 @@ const fetchAndWriteToJSON = async () => {
 	const types = makeEnum("type");
 	const rarities = makeEnum("rarity");
 	const cardClasses = makeEnum("cardClass");
+	const races = makeEnum("race");
 
 	fs.writeFileSync(
 		"./data/cards.json",
@@ -46,6 +47,7 @@ const fetchAndWriteToJSON = async () => {
 			types: types(cards),
 			rarities: rarities(cards),
 			cardClasses: cardClasses(cards),
+			races: races(cards),
 			mechanics: createMechanics(cards),
 		}),
 	);

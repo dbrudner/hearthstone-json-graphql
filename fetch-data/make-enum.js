@@ -16,4 +16,5 @@ exports.makeEnum = e =>
 	_.pipe(
 		getEnum(e),
 		_.uniq,
+		_.compact,
 	);
