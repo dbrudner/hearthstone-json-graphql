@@ -9,7 +9,7 @@ module.exports = args => {
 	}
 
 	const options = {
-		keys: ["name", "text"],
+		keys: ["name", "text", "race"],
 		threshold: 0.2,
 		shouldSort: true,
 	};
