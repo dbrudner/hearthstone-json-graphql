@@ -30,6 +30,7 @@ const filterByEnum = args => {
 		createFilter("rarity"),
 		createFilter("set"),
 		createFilter("type"),
+		createFilter("race"),
 		createFilter("mechanics"),
 	);
 };
