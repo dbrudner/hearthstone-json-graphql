@@ -34,17 +34,32 @@ const testData = [
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
 		type: "SPELL",
 	},
+	{
+		artist: "Tooth",
+		cardClass: "MAGE",
+		collectible: true,
+		cost: 3,
+		dbfId: 2541,
+		flavor: "LOL.",
+		id: "AT_002",
+		name: "Guy thing",
+		rarity: "RARE",
+		set: "TGT",
+		text: "Checking for blrglrg.",
+		type: "SPELL",
+		race: "murloc",
+	},
 ];
 
 describe("search filter", () => {
-	it("shouldn't return all cards when no search arg is present", () => {
+	it("should return all cards when no search arg is present", () => {
 		const actual = search({})(testData);
 
 		expect(actual).toEqual(testData);
 	});
 
 	it("should search card by name", () => {
-		const expected = testData.slice(1);
+		const expected = testData.slice(1, 2);
 
 		const actual = search({ search: "secret" })(testData);
 
@@ -55,6 +70,14 @@ describe("search filter", () => {
 		const expected = testData.slice(0, 1);
 
 		const actual = search({ search: "damage" })(testData);
+
+		expect(expected).toEqual(actual);
+	});
+
+	it("should search card by race", () => {
+		const expected = testData.slice(2);
+
+		const actual = search({ search: "murloc" })(testData);
 
 		expect(expected).toEqual(actual);
 	});
