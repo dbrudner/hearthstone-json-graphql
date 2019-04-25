@@ -74,7 +74,6 @@ describe("card-class filter", () => {
 		const actual = filterByEnum({ filter: { mechanics: "CHARGE" } })(
 			testData,
 		);
-
 		expect(expected).toEqual(actual);
 	});
 });
