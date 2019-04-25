@@ -1,84 +1,24 @@
-const Cards = require("./schema");
-const {
-	GraphQLString,
-	GraphQLInputObjectType,
-	GraphQLInt,
-} = require("graphql");
+const Cards = require("./type");
+const { GraphQLString } = require("graphql");
 const query = require("./query");
 const { cards } = require("../../data/cards");
-const createEnum = require("../../lib/create-enum");
-const { sets, rarities, cardClasses, types } = require("../../data/cards");
-
-const cardClass = createEnum(cardClasses, "cardClass");
-const rarity = createEnum(rarities, "rarities");
-const set = createEnum(sets, "set");
-const type = createEnum(types, "type");
-
-const quantity = new GraphQLInputObjectType({
-	name: "Quantity",
-	fields: {
-		isLessThan: {
-			type: GraphQLInt,
-		},
-		isGreaterThan: {
-			type: GraphQLInt,
-		},
-		isEqualTo: {
-			type: GraphQLInt,
-		},
-	},
-});
+const Filter = require("./types/filter");
+const Sort = require("./types/sort");
+const Results = require("./types/results");
 
 module.exports = {
 	type: Cards,
 	args: {
 		filter: {
-			type: new GraphQLInputObjectType({
-				name: "Filter",
-				fields: {
-					name: { type: GraphQLString },
-					text: { type: GraphQLString },
-					flavor: { type: GraphQLString },
-					health: { type: quantity },
-					attack: { type: quantity },
-					cost: { type: quantity },
-					cardClass: { type: cardClass },
-					rarity: { type: rarity },
-					set: { type: set },
-					type: { type },
-				},
-			}),
+			type: Filter,
 			description: "Search for cards",
 		},
 		sort: {
-			type: new GraphQLInputObjectType({
-				name: "Sorted",
-				fields: {
-					by: {
-						type: GraphQLString,
-					},
-					direction: {
-						type: GraphQLString,
-					},
-				},
-			}),
+			type: Sort,
 			description: "Sort cards by property in either direction",
 		},
 		results: {
-			type: new GraphQLInputObjectType({
-				name: "Results",
-				fields: {
-					limit: {
-						type: GraphQLInt,
-					},
-					page: {
-						type: GraphQLInt,
-					},
-					offset: {
-						type: GraphQLInt,
-					},
-				},
-			}),
+			type: Results,
 			description: "Pagination and result limits.",
 		},
 		search: {
