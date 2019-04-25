@@ -1,8 +1,6 @@
 const _ = require("lodash/fp");
 const get = require("lodash/get");
 
-const makeLowercase = _.map(_.lowerCase);
-
 const filterByEnum = args => {
 	const createFilter = enumerable => {
 		const arg = get(args, `filter.${enumerable}`);
@@ -11,16 +9,20 @@ const filterByEnum = args => {
 			return _.map(x => x);
 		}
 
+		const hasAllMechanics = mechanicsFromCard => {
+			if (!mechanicsFromCard) {
+				return false;
+			}
+
+			return arg.every(m => mechanicsFromCard.includes(m));
+		};
+
 		return _.filter(
 			_.pipe(
 				_.get(enumerable),
 				enumerable === "mechanics"
-					? _.pipe(
-							_.every(m =>
-								makeLowercase(arg).includes(m.toLowerCase()),
-							),
-					  )
-					: _.eq(arg),
+					? hasAllMechanics
+					: _.eq(args.filter[enumerable]),
 			),
 		);
 	};

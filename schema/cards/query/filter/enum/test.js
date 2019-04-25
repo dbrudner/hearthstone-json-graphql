@@ -69,25 +69,22 @@ describe("card-class filter", () => {
 	});
 
 	it("should filter mechanics", () => {
-		const expected = testData.slice(4);
+		const expected = testData.slice(3);
 
-		const actual = filterByEnum({ filter: { mechanics: ["charge"] } })(
+		const actual = filterByEnum({ filter: { mechanics: ["CHARGE"] } })(
 			testData,
 		);
-
-		console.log(expected);
-		console.log(actual);
 
 		expect(expected).toEqual(actual);
 	});
 
-	// it("should filter multiple mechanics", () => {
-	// 	const expected = testData.slice(4, 5);
+	it("should filter multiple mechanics", () => {
+		const expected = testData.slice(3, 4);
 
-	// 	const actual = filterByEnum({
-	// 		filter: { mechanics: ["CHARGE", "BATTLECRY"] },
-	// 	})(testData);
+		const actual = filterByEnum({
+			filter: { mechanics: ["CHARGE", "BATTLECRY"] },
+		})(testData);
 
-	// 	expect(expected).toEqual(actual);
-	// });
+		expect(expected).toEqual(actual);
+	});
 });
