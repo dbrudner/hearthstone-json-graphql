@@ -71,7 +71,7 @@ describe("card-class filter", () => {
 	it("should filter mechanics", () => {
 		const expected = testData.slice(4);
 
-		const actual = filterByEnum({ filter: { mechanics: "CHARGE" } })(
+		const actual = filterByEnum({ filter: { mechanics: ["CHARGE"] } })(
 			testData,
 		);
 
