@@ -9,11 +9,19 @@ const filterByEnum = args => {
 			return _.map(x => x);
 		}
 
+		const hasAllMechanics = mechanicsFromCard => {
+			if (!mechanicsFromCard) {
+				return false;
+			}
+
+			return arg.every(m => mechanicsFromCard.includes(m));
+		};
+
 		return _.filter(
 			_.pipe(
 				_.get(enumerable),
 				enumerable === "mechanics"
-					? _.includes(args.filter[enumerable])
+					? hasAllMechanics
 					: _.eq(args.filter[enumerable]),
 			),
 		);

@@ -23,7 +23,7 @@ const testData = [
 		name: "Flame Lance",
 		cardClass: "MAGE",
 		rarity: "COMMON",
-		mechanics: ["BATTLECRY, CHARGE"],
+		mechanics: ["BATTLECRY", "CHARGE"],
 	},
 	{
 		name: "Flame Leviathan",
@@ -69,11 +69,21 @@ describe("card-class filter", () => {
 	});
 
 	it("should filter mechanics", () => {
-		const expected = testData.slice(4);
+		const expected = testData.slice(3);
 
-		const actual = filterByEnum({ filter: { mechanics: "CHARGE" } })(
+		const actual = filterByEnum({ filter: { mechanics: ["CHARGE"] } })(
 			testData,
 		);
+
+		expect(expected).toEqual(actual);
+	});
+
+	it("should filter multiple mechanics", () => {
+		const expected = testData.slice(3, 4);
+
+		const actual = filterByEnum({
+			filter: { mechanics: ["CHARGE", "BATTLECRY"] },
+		})(testData);
 
 		expect(expected).toEqual(actual);
 	});
