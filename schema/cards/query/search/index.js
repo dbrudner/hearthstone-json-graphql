@@ -10,8 +10,9 @@ module.exports = args => {
 
 	const options = {
 		keys: ["name", "text", "race"],
-		threshold: 0.2,
+		threshold: 0.35,
 		shouldSort: true,
+		caseSensitive: false
 	};
 
 	return cards => new Fuse(cards, options).search(searchTerm);

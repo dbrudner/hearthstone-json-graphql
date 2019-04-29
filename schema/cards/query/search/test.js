@@ -16,7 +16,7 @@ const testData = [
 		rarity: "COMMON",
 		set: "TGT",
 		text: "Deal $8 damage to a minion.",
-		type: "SPELL",
+		type: "SPELL"
 	},
 	{
 		artist: "Tooth",
@@ -32,7 +32,7 @@ const testData = [
 		set: "TGT",
 		text:
 			"<b>Secret:</b> When a friendly minion dies, summon a random minion with the same Cost.",
-		type: "SPELL",
+		type: "SPELL"
 	},
 	{
 		artist: "Tooth",
@@ -47,8 +47,38 @@ const testData = [
 		set: "TGT",
 		text: "Checking for blrglrg.",
 		type: "SPELL",
-		race: "murloc",
-	},
+		race: "murloc"
+	}
+];
+
+const test2 = [
+	{
+		artist: "Wayne Reynolds",
+		attack: 5,
+		cardClass: "MAGE",
+		collectible: true,
+		cost: 7,
+		dbfId: 1080,
+		elite: true,
+		flavor:
+			"Antonidas was the Grand Magus of the Kirin Tor, and Jaina's mentor.  This was a big step up from being Grand Magus of Jelly Donuts.",
+		health: 7,
+		id: "EX1_559",
+		mechanics: ["TRIGGER_VISUAL"],
+		name: "Archmage Antonidas",
+		rarity: "LEGENDARY",
+		set: "EXPERT1",
+		text: "Whenever you cast a spell, add a Fireball spell to your hand.",
+		type: "MINION",
+		images: {
+			small:
+				"https://art.hearthstonejson.com/v1/render/latest/enUS/256x/EX1_559.png",
+			large:
+				"https://art.hearthstonejson.com/v1/render/latest/enUS/512x/EX1_559.png",
+			tile: "https://art.hearthstonejson.com/v1/tiles/EX1_559.png"
+		},
+		lightforge: { MAGE: 156 }
+	}
 ];
 
 describe("search filter", () => {
@@ -82,11 +112,10 @@ describe("search filter", () => {
 		expect(expected).toEqual(actual);
 	});
 
-	it("should filter real data", () => {
-		const actual = search({
-			search: "drake",
-		})(cards);
+	it("should search card text", () => {
+		const actual = search({ search: "fireball" })(test2);
+		const expected = test2;
 
-		expect(actual.length).toBe(14);
+		expect(actual).toEqual(expected);
 	});
 });

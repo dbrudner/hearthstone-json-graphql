@@ -17,63 +17,57 @@ describe("full query with real data", () => {
 	it("should pass a test with real data", () => {
 		const expected = [
 			{
-				name: "Aluneth",
+				name: "Aluneth"
 			},
 			{
-				name: "Anomalus",
+				name: "Anomalus"
 			},
 			{
-				name: "Archmage Antonidas",
+				name: "Archmage Antonidas"
 			},
 			{
-				name: "Archmage Arugal",
+				name: "Archmage Arugal"
 			},
 			{
-				name: "Dragoncaller Alanna",
+				name: "Dragoncaller Alanna"
 			},
 			{
-				name: "Flame Leviathan",
+				name: "Flame Leviathan"
 			},
 			{
-				name: "Frost Lich Jaina",
+				name: "Frost Lich Jaina"
 			},
 			{
-				name: "Inkmaster Solia",
+				name: "Inkmaster Solia"
 			},
 			{
-				name: "Luna's Pocket Galaxy",
+				name: "Luna's Pocket Galaxy"
 			},
 			{
-				name: "Open the Waygate",
+				name: "Open the Waygate"
 			},
 			{
-				name: "Pyros",
+				name: "Pyros"
 			},
 			{
-				name: "Rhonin",
+				name: "Rhonin"
 			},
 			{
-				name: "Sindragosa",
+				name: "Sindragosa"
 			},
 			{
-				name: "Stargazer Luna",
+				name: "Stargazer Luna"
 			},
 			{
-				name: "Toki, Time-Tinker",
-			},
+				name: "Toki, Time-Tinker"
+			}
 		];
 
 		const actual = query(cards, {
 			filter: { cardClass: "MAGE", rarity: "LEGENDARY" },
-			sort: { by: "name" },
+			sort: { by: "name" }
 		});
 
 		expect(actual.map(({ name }) => ({ name }))).toEqual(expected);
-	});
-
-	it("should perform a search", () => {
-		const actual = query(cards, { search: "drake" });
-
-		expect(actual.length).toBe(14);
 	});
 });
