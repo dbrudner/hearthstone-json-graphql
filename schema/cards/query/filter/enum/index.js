@@ -6,7 +6,7 @@ const filterByEnum = args => {
 		const arg = get(args, `filter.${enumerable}`);
 
 		if (!arg) {
-			return _.map(x => x);
+			return x => x;
 		}
 
 		const hasAllMechanics = mechanicsFromCard => {

@@ -2,7 +2,7 @@ const _ = require("lodash/fp");
 
 const sort = args => {
 	if (!args || !args.sort) {
-		return _.map(cards => cards);
+		return x => x;
 	}
 
 	const sort = _.sortBy(args.sort.by);

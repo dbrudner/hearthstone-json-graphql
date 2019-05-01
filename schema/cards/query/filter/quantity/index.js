@@ -16,7 +16,7 @@ const quantity = args => cards => {
 		const cardPropertyValue = get(args, `filter.${cardProperty}`);
 
 		if (!cardPropertyValue) {
-			return _.map(cards => cards);
+			return x => x;
 		}
 
 		const compare = compareFn =>
