@@ -60,14 +60,19 @@
                 cardClass
             </a>
         </li>
-        <li  title="rarities">
-            <a href="rarities.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                rarities
+        <li  title="mechanic">
+            <a href="mechanic.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                mechanic
             </a>
         </li>
-        <li  title="Rarity">
+        <li  title="race">
+            <a href="race.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                race
+            </a>
+        </li>
+        <li  title="rarity">
             <a href="rarity.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Rarity
+                rarity
             </a>
         </li>
         <li  title="set">
@@ -78,11 +83,6 @@
         <li  title="type">
             <a href="type.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 type
-            </a>
-        </li>
-        <li  title="Type">
-            <a href="type.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Type
             </a>
         </li>
         <li  title="__DirectiveLocation">
@@ -105,9 +105,14 @@
                 Card
             </a>
         </li>
-        <li  title="lightForgeScores">
+        <li  title="images">
+            <a href="images.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                images
+            </a>
+        </li>
+        <li  title="lightforgeScores">
             <a href="lightforgescores.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                lightForgeScores
+                lightforgeScores
             </a>
         </li>
         <li  title="Meta">
@@ -158,11 +163,6 @@
         <li  title="Quantity">
             <a href="quantity.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 Quantity
-            </a>
-        </li>
-        <li  title="Results">
-            <a href="results.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Results
             </a>
         </li>
         <li  title="Sorted">
@@ -218,7 +218,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Card</span> {</li><li></li><li><span class="tab"><span class="meta">name</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">dbfId</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">text</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">rarity</span>: <a class="support type" href="rarity.doc.html">Rarity</a> </span></li><li></li><li><span class="tab"><span class="meta">flavor</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">artist</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">attack</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">cardClass</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">collectible</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">cost</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">elite</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">faction</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">set</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">health</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="type.doc.html">Type</a> </span></li><li></li><li><span class="tab"><span class="meta">mechanics</span>: [<a class="support type" href="string.doc.html">String</a>] </span></li><li></li><li><span class="tab"><span class="meta">lightForgeScores</span>: <a class="support type" href="lightforgescores.doc.html">lightForgeScores</a> </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Card</span> {</li><li></li><li><span class="tab"><span class="meta">name</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">dbfId</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">text</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">rarity</span>: <a class="support type" href="rarity.doc.html">rarity</a> </span></li><li></li><li><span class="tab"><span class="meta">flavor</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">artist</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">attack</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">cardClass</span>: <a class="support type" href="cardclass.doc.html">cardClass</a> </span></li><li></li><li><span class="tab"><span class="meta">collectible</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">cost</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">elite</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">faction</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">set</span>: <a class="support type" href="set.doc.html">set</a> </span></li><li></li><li><span class="tab"><span class="meta">race</span>: <a class="support type" href="race.doc.html">race</a> </span></li><li></li><li><span class="tab"><span class="meta">health</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="meta">images</span>: <a class="support type" href="images.doc.html">images</a> </span></li><li></li><li><span class="tab"><span class="meta">tileImgUrl</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="type.doc.html">type</a> </span></li><li></li><li><span class="tab"><span class="meta">mechanics</span>: [<a class="support type" href="mechanic.doc.html">mechanic</a>] </span></li><li></li><li><span class="tab"><span class="meta">lightforgeScores</span>: <a class="support type" href="lightforgescores.doc.html">lightforgeScores</a> </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
