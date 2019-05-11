@@ -4,7 +4,6 @@ const query = require("./query");
 const { cards } = require("../../data/cards");
 const Filter = require("./types/filter");
 const Sort = require("./types/sort");
-const Results = require("./types/results");
 
 module.exports = {
 	type: Cards,
@@ -16,10 +15,6 @@ module.exports = {
 		sort: {
 			type: Sort,
 			description: "Sort cards by property in either direction",
-		},
-		results: {
-			type: Results,
-			description: "Pagination and result limits.",
 		},
 		search: {
 			type: GraphQLString,
