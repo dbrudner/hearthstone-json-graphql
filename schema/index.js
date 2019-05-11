@@ -6,7 +6,7 @@ module.exports = new GraphQLSchema({
 	query: new GraphQLObjectType({
 		name: "RootQueryType",
 		fields: {
-			cards: Cards,
+			search: Cards,
 			meta: Meta,
 		},
 	}),

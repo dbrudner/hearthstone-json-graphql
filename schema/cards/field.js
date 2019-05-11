@@ -1,10 +1,9 @@
 const Cards = require("./type");
-const { GraphQLString } = require("graphql");
+const { GraphQLString, GraphQLInt } = require("graphql");
 const query = require("./query");
-const { cards } = require("../../data/cards");
+const data = require("../../data/cards");
 const Filter = require("./types/filter");
 const Sort = require("./types/sort");
-const Results = require("./types/results");
 
 module.exports = {
 	type: Cards,
@@ -17,16 +16,26 @@ module.exports = {
 			type: Sort,
 			description: "Sort cards by property in either direction",
 		},
-		results: {
-			type: Results,
-			description: "Pagination and result limits.",
+		limit: {
+			type: GraphQLInt,
+		},
+		page: {
+			type: GraphQLInt,
+		},
+		offset: {
+			type: GraphQLInt,
 		},
 		search: {
 			type: GraphQLString,
 			description: "Fuzzy search for card names and card text",
 		},
 	},
-	async resolve(_, args) {
-		return query(cards, args);
+	async resolve(o, args) {
+		const cards = await query(data.cards, args);
+		const _meta = await {
+			total: cards.length,
+		};
+
+		return { data: cards, _meta };
 	},
 };
