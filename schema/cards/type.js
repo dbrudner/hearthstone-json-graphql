@@ -43,7 +43,7 @@ const Card = new GraphQLObjectType({
 			mechanics: {
 				type: GraphQLList(Mechanic),
 			},
-			lightforgeScores: {
+			lightforge: {
 				type: LightforgeScores,
 			},
 		};
