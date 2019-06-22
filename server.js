@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 const get = require("lodash/get");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
+const report = require("./report");
 
 app.use(cors());
 app.use(bodyParser());
@@ -37,6 +38,10 @@ app.use("*", async (req, res, next) => {
 	);
 
 	next();
+});
+
+app.get("/report", (req, res) => {
+	res.send(report());
 });
 
 app.post("/report", async (req, res) => {
