@@ -1,3 +1,4 @@
+require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
@@ -7,25 +8,60 @@ const app = express();
 const bodyParser = require("body-parser");
 const get = require("lodash/get");
 const fs = require("fs");
+const nodemailer = require("nodemailer");
 
 app.use(cors());
 app.use(bodyParser());
 
 app.use("*", async (req, res, next) => {
-	next();
+	if (get(req, "route.path") === "/report") {
+		next();
+		return;
+	}
 
 	const query = get(req, "body.query");
 	const variables = get(req, "body.variables");
 
-	const oldLogs = await JSON.parse(fs.readFileSync("./log.json"));
-	const newLogs = await [
-		{ query, variables },
-		...oldLogs["graph-ql-queries"],
-	];
+	const oldLogs = await fs.readFileSync("./log.json", "utf-8");
 
 	fs.writeFileSync(
 		"./log.json",
-		JSON.stringify({ "graph-ql-queries": newLogs }),
+		JSON.stringify({
+			"graph-ql-queries": await [
+				{ query, variables },
+				...JSON.parse(oldLogs)["graph-ql-queries"],
+			],
+		}),
+	);
+
+	next();
+});
+
+app.post("/report", async (req, res) => {
+	const { emailAddress } = req.body;
+
+	const transporter = nodemailer.createTransport({
+		service: "gmail",
+		auth: {
+			user: process.env.U,
+			pass: process.env.P,
+		},
+	});
+
+	transporter.sendMail(
+		{
+			from: process.env.U,
+			to: emailAddress,
+			subject: "Queries bro",
+			text: await fs.readFileSync("./log.json", "utf-8"),
+		},
+		(err, info) => {
+			if (err) {
+				res.json(err);
+			} else {
+				res.json(info);
+			}
+		},
 	);
 });
 
