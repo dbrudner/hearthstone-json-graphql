@@ -55,7 +55,13 @@ app.post("/report", async (req, res) => {
 			from: process.env.U,
 			to: emailAddress,
 			subject: "Queries bro",
-			text: await fs.readFileSync("./log.json", "utf-8"),
+			attachments: [
+				{
+					filename: "queries.json",
+					contentType: "applicaton/json",
+					content: await fs.readFileSync("./log.json", "utf-8"),
+				},
+			],
 		},
 		(err, info) => {
 			if (err) {
