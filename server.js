@@ -11,10 +11,15 @@ const bodyParser = require("body-parser");
 const get = require("lodash/get");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
+const report = require("./report");
 
 app.use(cors());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+app.get("/report", (req, res) => {
+	res.send(report());
+});
 
 app.post("/report", async (req, res) => {
 	const { emailAddress } = req.body;
