@@ -21,38 +21,9 @@ app.get("/report", (req, res) => {
 	res.send(report());
 });
 
-app.post("/report", async (req, res) => {
-	const { emailAddress } = req.body;
-
-	const transporter = nodemailer.createTransport({
-		service: "gmail",
-		auth: {
-			user: process.env.U,
-			pass: process.env.P,
-		},
-	});
-
-	transporter.sendMail(
-		{
-			from: process.env.U,
-			to: emailAddress,
-			subject: "Queries bro",
-			attachments: [
-				{
-					filename: "queries.json",
-					contentType: "applicaton/json",
-					content: await fs.readFileSync("./log.json", "utf-8"),
-				},
-			],
-		},
-		(err, info) => {
-			if (err) {
-				res.json(err);
-			} else {
-				res.json(info);
-			}
-		},
-	);
+app.get("/log", async (req, res) => {
+	const log = await fs.readFileSync("./log.json", "utf-8");
+	res.json(JSON.parse(log));
 });
 
 app.use(
