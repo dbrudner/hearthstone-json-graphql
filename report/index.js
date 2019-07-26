@@ -1,12 +1,5 @@
-const fs = require("fs");
-const path = require("path");
-
-const createData = () => {
-	const queries = JSON.parse(
-		fs.readFileSync(path.resolve(__dirname, "..", "log.json"), "utf-8"),
-	);
-
-	return queries["graph-ql-queries"]
+const createData = log => {
+	return log
 		.map(({ query, variables }) => {
 			if (query) {
 				return `<tr><td>${query}</td><td>${variables || ""}</td></tr>`;
@@ -15,7 +8,7 @@ const createData = () => {
 		.join("");
 };
 
-module.exports = () => {
+module.exports = log => {
 	return `<!DOCTYPE html>
 	<html lang="en">
 	<head>
@@ -36,7 +29,7 @@ module.exports = () => {
 				</tr>
 			</thead>
 			<tbody>
-			${createData()}
+			${createData(log)}
 			</tbody>
 		</table>
 	</div>
