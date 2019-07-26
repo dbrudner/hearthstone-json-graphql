@@ -35,7 +35,6 @@
 	},
 	"devDependencies": {
 		"@2fd/graphdoc": "^2.4.0",
-		"dotenv": "^8.0.0",
 		"jest": "^24.7.1",
 		"jest-junit": "^6.3.0",
 		"nodemon": "^1.18.10"
