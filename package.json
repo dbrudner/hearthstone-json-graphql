@@ -30,7 +30,7 @@
 		"fuse.js": "^3.4.4",
 		"graphql": "^14.1.1",
 		"lodash": "^4.17.15",
-		"node-fetch": "^2.3.0",
+		"node-fetch": "^2.6.7",
 		"redis": "^2.8.0"
 	},
 	"devDependencies": {
